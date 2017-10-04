@@ -1,0 +1,584 @@
+﻿
+<form [formGroup]="formDatosGenerales" (ngSubmit)="Save()" class="form-inline">
+    <h1>{{title}}</h1>
+    <image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc]="imgProfile" (imgLoaded)="OnLoadedProfileImage($event)" ></image-uploader>
+    
+    <!-- INFORMACION GENERAL -->
+    <fieldset>
+        <legend>INFORMACIÓN GENERAL</legend>
+        <!-- NOMBRE -->
+        <div class="clear">
+            <label for="Nombre">Nombre Completo:</label>
+        </div>
+        <div class="form-group">
+            <input formControlName="imgProfileUrl" hidden="hidden"/>
+        </div>
+        <div class="form-group">
+            <input formControlName="Nombre"
+                   OnlyLetters="true"
+                   type="Text" class="form-control"
+                   [class.input-validation-error]="formDatosGenerales.controls.Nombre.touched  && formDatosGenerales.controls.Nombre.invalid"
+                   id="Nombre" placeholder="Nombre"
+                   #Nombre (keyup)="Nombre.value=$event.target.value.toUpperCase()" />
+            <div *ngIf="formDatosGenerales.controls.Nombre.touched  && formDatosGenerales.controls.Nombre.invalid">
+                <div class="validation-error-message "
+                     *ngIf="formDatosGenerales.controls.Nombre.errors.required">
+                    * Campo requerido.
+                </div>
+            </div>
+        </div>
+        <!-- PATERNO -->
+        <div class="form-group">
+            <input formControlName="apellidoPaterno"
+                   OnlyLetters="true"
+                   type="Text" class="form-control"
+                   [class.input-validation-error]="formDatosGenerales.controls.apellidoPaterno.touched  && formDatosGenerales.controls.apellidoPaterno.invalid"
+                   id="Paterno" placeholder="Apellido Paterno"
+                   #apellidoPaterno (keyup)="apellidoPaterno.value=$event.target.value.toUpperCase()" />
+            <div *ngIf="formDatosGenerales.controls.apellidoPaterno.touched  && formDatosGenerales.controls.apellidoPaterno.invalid">
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.apellidoPaterno.errors.required">
+                    * Campo requerido.
+                </div>
+            </div>
+        </div>
+        <!--MATERNO-->
+        <div class="form-group">
+            <input formControlName="apellidoMaterno"
+                   OnlyLetters="true"
+                   type="Text" class="form-control" id="Materno" placeholder="Apellido Materno"
+                   #apellidoMaterno (keyup)="apellidoMaterno.value=$event.target.value.toUpperCase()" />
+        </div>
+        <!-- CORREO ELECTRONICO -->
+        <div class="clear">
+            <label for="email">Correo Electrónico:</label>
+        </div>
+        <div class="form-group">
+            <input formControlName="email"
+                   id="email" type="text" value=""
+                   placeholder="correo@ejemplo.com"
+                   class="form-control"
+                   [class.input-validation-error]="formDatosGenerales.controls.email.touched  && formDatosGenerales.controls.email.invalid" />
+            <div *ngIf="formDatosGenerales.controls.email.touched  && formDatosGenerales.controls.email.invalid">
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.email.errors.required">
+                    * Campo requerido.
+                </div>
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.email.errors.ValidarCorreo">
+                    Debe proporcionar un cadena de correo valida.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input formControlName="confirmEmail"
+                   id="confirmEmail"
+                   type="text" value=""
+                   placeholder="Confirmar correo"
+                   class="form-control"
+                   [class.input-validation-error]="formDatosGenerales.controls.confirmEmail.invalid && formDatosGenerales.controls.confirmEmail.touched" />
+            <div *ngIf="formDatosGenerales.controls.confirmEmail.touched  && formDatosGenerales.controls.confirmEmail.invalid">
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.confirmEmail.errors.required">
+                    *Confirme el correo porfavor.
+                </div>
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.confirmEmail.errors.ConfirmarCorreo">
+                    *Los correos no concuerdan.
+                </div>
+            </div>
+          </div>
+       
+
+
+    </fieldset>
+
+    <!-- DATOS PERSONALES -->
+    <fieldset formGroupName="datospersonales">
+        <legend>DATOS PERSONALES</legend>
+
+        <div class="clear">
+            <label>Fecha y lugar de nacimiento:</label>
+        </div>
+        <!-- FECHA DE NACIMIENTO -->
+        <div class="form-group">
+            <p-calendar formControlName="fechaNacimiento"
+                        [monthNavigator]="true"
+                        [yearNavigator]="true"
+                        yearRange="1930:2017"
+                        placeholder="Fecha de nacimiento"
+                        required="True"
+                        inputStyleClass="form-control">
+            </p-calendar>
+            <div *ngIf="formDatosGenerales.controls.datospersonales.controls.fechaNacimiento.touched && formDatosGenerales.controls.datospersonales.controls.fechaNacimiento.invalid">
+                <div class="validation-error-message">
+                    *Campo requerido
+                </div>
+            </div>
+        </div>
+        <!-- PAIS DE NACIMIENTO-->
+        <div class="form-group">
+            <p-autoComplete formControlName="paisNacimiento"
+                            [suggestions]="filteredCountriesSingle"
+                            (completeMethod)="filterCountrySingle($event)"
+                            field="pais"
+                            [size]="24"
+                            placeholder="País de Nacimiento"
+                            [minLength]="1"
+                            (onSelect)="SetPaisNacimiento($event)"
+                            (onBlur)="ValidatePaisNacimiento()"
+                            inputStyleClass="form-control">
+
+            </p-autoComplete>
+            <div *ngIf="formDatosGenerales.controls.datospersonales.controls.paisNacimiento.touched">
+                <div *ngIf="formDatosGenerales.controls.datospersonales.controls.paisNacimiento.invalid">
+                    <div class="validation-error-message">
+                        *Campo requerido
+                    </div>
+                </div>
+                <div [hidden]="paisNacimientoValid"
+                     [class.validation-error-message]="!paisNacimientoValid">
+                    *Seleccione un país de la lista
+                </div>
+            </div>
+        </div>
+        <!-- ESTADO -->
+        <div class="form-group" *ngIf="esMexicano">
+            <div [hidden]="!esMexicano">
+                <p-autoComplete formControlName="estadoNacimiento"
+                                [suggestions]="filteredStatesSingle"
+                                (completeMethod)="filterStateSingle($event)"
+                                field="estado"
+                                [size]="24"
+                                placeholder="Estado de Nacimiento"
+                                [minLength]="1"
+                                (onSelect)="setEstadoNacimiento($event)"
+                                (onBlur)="ValidateEstadoNacimiento()"
+                                inputStyleClass="form-control">
+
+                </p-autoComplete>
+                <div *ngIf="formDatosGenerales.controls.datospersonales.controls.estadoNacimiento.touched">
+
+                    <div [hidden]="wasEdoSelected"
+                         [class.validation-error-message]="!wasEdoSelected">
+                        *Campo requerido seleccione un estado de la lista
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MUNICIPIO -->
+        <div class="form-group">
+            <div [hidden]="!wasEdoSelected">
+                <p-autoComplete formControlName="municipioNacimiento"
+                                [suggestions]="filteredTownsSingle"
+                                (completeMethod)="filterTownsSingle($event)"
+                                field="municipio"
+                                [size]="24"
+                                placeholder="Municipio de Nacimiento"
+                                [minLength]="1"
+                                (onSelect)="setMunicipioNacimiento($event)"
+                                inputStyleClass="form-control">
+
+                </p-autoComplete>
+            </div>
+        </div>
+        <!-- ES EXTRANGERO -->
+        <div class="form-group">
+            <div [hidden]="!esExtrangero">
+                <input class="form-control" placeholder="Código Postal" 
+                       formControlName="codigoPostal"
+                       />
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!-- SEXO -->
+        <div class="form-group">
+            <select class="form-control "
+                    [class.input-validation-error]="!formDatosGenerales.controls.datospersonales.controls.generoId.valid && formDatosGenerales.controls.datospersonales.controls.generoId.touched"
+                    [class.selectPlaceholder]="!formDatosGenerales.controls.datospersonales.controls.generoId.valid"
+                    formControlName="generoId">
+                <option selected hidden>Genero</option>
+                <option *ngFor="let genero of generos" [value]="genero.id">{{genero.genero}}</option>
+            </select>
+            <div *ngIf="formDatosGenerales.controls.datospersonales.controls.generoId.touched  && formDatosGenerales.controls.datospersonales.controls.generoId.invalid">
+                <div class="validation-error-message"
+                     *ngIf="formDatosGenerales.controls.datospersonales.controls.generoId.errors.ListaValidator">
+                    * Campo requerido.
+                </div>
+            </div>
+        </div>
+        <!-- ESTADO CIVIL -->
+        <div class="form-group">
+            <select class="form-control" formControlName="estadoCivilId"
+                    [class.selectPlaceholder]="!formDatosGenerales.controls.datospersonales.controls.estadoCivilId.touched ">
+                <option selected hidden>Estado Civil</option>
+                <option *ngFor="let edoCivil of estadosCiviles" [value]="edoCivil.id">{{edoCivil.estadoCivil}}</option>
+            </select>
+        </div>
+        <!-- TELEFONOS DE CONTACTO -->
+        <div class="clear">
+            <label for="Telefonos">Telefonos:</label>
+        </div>
+        <!-- CELULAR -->
+        <div class="form-group">
+            <input type="text" id="1" class="form-control"
+                   OnlyNumber="true"
+                   formControlName="telCelular"
+                   placeholder="Celular"
+                   (blur)="ValidarTelefonos()" />
+        </div>
+        <!-- CASA -->
+        <div class="form-group">
+            <input type="text" id="2" class="form-control"
+                   OnlyNumber="true"
+                   formControlName="telCasa"
+                   placeholder="Casa"
+                   (blur)="ValidarTelefonos()" />
+        </div>
+        <!-- OFICINA -->
+        <div class="form-group">
+            <input type="text" id="3" class="form-control"
+                   OnlyNumber="true"
+                   formControlName="telOficina"
+                   placeholder="Oficina"
+                   (blur)="ValidarTelefonos()" />
+        </div>
+        <div *ngIf="formDatosGenerales.controls.datospersonales.controls.telCelular.touched || formDatosGenerales.controls.datospersonales.controls.telCasa.touched
+                    || formDatosGenerales.controls.datospersonales.controls.telOficina.touched"
+             class="clear"
+             [hidden]="telefonoValidate"
+             [class.validation-error-message]="!telefonoValidate">
+            *Debe al menos introducir un teléfono.<br />
+            *Los numeros telefonicos deben ser numericos con una longitud de 10 digistos.
+        </div>
+        <!-- ES DISCAPACITADO -->
+        <div class="clear"> </div>
+        <div class="checkbox">
+            <label>¿Persona con discpacidad?</label>
+            <label>
+                <input id="esDiscapacitado" type="checkbox"
+                       formControlName="esDiscapacitado"
+                       (click)="showTiposDiscapacidades($event.target.checked)">
+            </label>
+        </div>
+        <!--TIPO DE DISCAPACIDAD-->
+        <div class="form-group">
+            <div [hidden]="!discapacitado">
+                <select class="form-control" id="select"
+                        formControlName="tipoDiscapacidadId">
+                    <option selected>Clase de Discapacidad</option>
+                    <option *ngFor="let TipoDiscapacidad of discapacidades" value="{{TipoDiscapacidad.id}}">
+                        {{TipoDiscapacidad.tipoDiscapacidad}}
+                    </option>
+
+                </select>
+            </div>
+        </div>
+        <!--PUEDE VIAJAR  -->
+        <div class="clear"> </div>
+        <div class="checkbox">
+            <label>¿Disponibilidad para viajar?</label>
+            <label>
+                <input id="puedeViajar" type="checkbox"
+                       formControlName="puedeViajar"/>
+            </label>
+        </div>
+        <!-- PUEDE REHUBICARSE -->
+        <div class="clear"> </div>
+        <div class="checkbox">
+            <label>¿Disponibilidad para ser rehubicado?</label>
+            <label>
+                <input id="puedeRehubicarse" type="checkbox"
+                       formControlName="puedeRehubicarse" />
+            </label>
+        </div>
+        <!-- LEYENDA -->
+        <div class="well">
+            <p>
+                <i class="fa fa-exclamation-circle"></i>
+                PARA BRINDARTE UN MEJOR SERVICIO Y ENCONTRAR LA VACANTE PARA TI, AYÚDANOS A LLENAR LOS SIGUIENTES DATOS
+            </p>
+        </div>
+        <!-- MÉTODOS DE CONTACTO -->
+        <div class="well">
+
+            <label>Selecciona el método ideal para comunicarnos contigo:</label>
+            <div class="clear"></div>
+            <span class="checkboxLabel">
+                <label for="correo">
+                    Correo Electrónico
+                </label>
+                <input type="checkbox"
+                       checked 
+                       name="metodoDeContacto"
+                       value="true"
+                       formControlName="correoElectronico" 
+                        (change)="ValidarMetodoContacto()"
+                       />
+            </span>
+            <span class="checkboxLabel">
+                <label for="celular" class="">
+                    Celular
+                </label>
+                <input type="checkbox"
+                       name="metodoDeContacto"
+                       value="celular"
+                       formControlName="celular" 
+                        (change)="ValidarMetodoContacto()"
+                       />
+            </span>
+            <span class="checkboxLabel">
+                <label for="whatsapp" class="">
+                    Whatsapp
+                </label>
+                <input type="checkbox"
+                       name="metodoDeContacto"
+                       value="whatsApp"                       
+                       formControlName="whatsApp" 
+                        (change)="ValidarMetodoContacto()"
+                       />
+            </span>
+            <span class="checkboxLabel">
+                <label for="telLocal" class="">
+                    Teléfono Local
+                </label>
+                <input type="checkbox"
+                       name="metodoDeContacto"
+                       value="telLocal"
+                       formControlName="telLocal" 
+                        (change)="ValidarMetodoContacto()"
+                       />
+            </span>
+            <div *ngIf="formDatosGenerales.controls.datospersonales.controls.correoElectronico.touched ||
+                  formDatosGenerales.controls.datospersonales.controls.celular.touched ||
+                 formDatosGenerales.controls.datospersonales.controls.whatsApp.touched  || 
+                  formDatosGenerales.controls.datospersonales.controls.telLocal.touched">
+                <div class="validation-error-message" [hidden]="metodoContacto">
+                    *Debe seleccionar al menos un método de contacto.
+                </div>
+
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- DIRECCION -->
+    <fieldset formGroupName="direccion">
+        <legend>DIRECCIÓN</legend>
+        <div class="clear">
+            <label>Dirección:</label>
+        </div>
+        <!-- PAIS-->
+        <div class="form-group">
+            <p-autoComplete formControlName="pais"
+                            [suggestions]="filteredCountries"
+                            (completeMethod)="filterCountry($event)"
+                            field="pais"
+                            [size]="24"
+                            placeholder="País"
+                            [minLength]="1"
+                            (onSelect)="setPais($event)"
+                            inputStyleClass="form-control">
+
+            </p-autoComplete>
+
+        </div>
+        <!-- ESTADO -->
+        <div class="form-group">
+            <div [hidden]="!viveMexico">
+                <p-autoComplete formControlName="estado"
+                                [suggestions]="filteredStates"
+                                (completeMethod)="filterState($event)"
+                                field="estado"
+                                [size]="24"
+                                placeholder="Estado"
+                                [minLength]="1"
+                                (onSelect)="setEstado($event)"
+                                inputStyleClass="form-control">
+
+                </p-autoComplete>
+            </div>
+        </div>
+
+        <!-- MUNICIPIO -->
+        <div class="form-group">
+            <div [hidden]="!edoSelected">
+                <p-autoComplete formControlName="municipio"
+                                [suggestions]="filteredTowns"
+                                (completeMethod)="filterTowns($event)"
+                                field="municipio"
+                                [size]="24"
+                                placeholder="Municipio"
+                                [minLength]="1"
+                                (onSelect)="setMunicipio($event)"
+                                inputStyleClass="form-control">
+
+                </p-autoComplete>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        <!-- CODIGO POSTAL --> 
+        <div class="form-group" >
+            <input type="Text" class="form-control" id="codigoPostal" placeholder="Código Postal"
+                   formControlName="codigoPostal"
+                   #cp (keyup)="cp.value=$event.target.value.toUpperCase()"
+                   (blur)="buscarColonias()">
+        </div>
+
+        <!-- COLONIA -->
+        <div class="form-group">
+            <div [hidden]="!viveMexico">
+                <p-autoComplete formControlName="colonia"
+                                [suggestions]="filteredColonias"
+                                (completeMethod)="filterColonias($event)"
+                                field="colonia"
+                                [size]="24"
+                                placeholder="Colonia"
+                                [minLength]="1"
+                                inputStyleClass="form-control">
+
+                </p-autoComplete>
+            </div>
+        </div>
+        <!-- CALLE -->
+        <div class="form-group">
+            <div [hidden]="!viveMexico">
+                <input type="Text" class="form-control" id="calle" placeholder="Calle"
+                       formControlName="calle"
+                       #calle (keyup)="calle.value=$event.target.value.toUpperCase()">
+            </div>
+        </div>
+        <!-- NUMERO EXTERIOR -->
+        <div class="form-group">
+            <div [hidden]="!viveMexico">
+                <input type="Text" class="form-control" id="numeroExterior" placeholder="Número Exterior"
+                       formControlName="numeroExterior"
+                       #numeroExterior (keyup)="numeroExterior.value=$event.target.value.toUpperCase()">
+            </div>
+        </div>
+        <!-- NUMERO INTERIOR -->
+        <div class="form-group">
+            <div [hidden]="!viveMexico">
+                <input type="Text" class="form-control" id="numeroInterior" placeholder="Número Interior"
+                       formControlName="numeroInterior"
+                       #numeroInterior (keyup)="numeroInterior.value=$event.target.value.toUpperCase()">
+            </div>
+        </div>
+
+
+    </fieldset>
+
+    <fieldset formGroupName="identificaciones">
+        <legend>IDENTIFICACIONES PERSONALES</legend>
+        <!-- NSS-->
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   formControlName="nss"
+                   placeholder="IMSS"
+                   #nss (keyup)="nss.value=$event.target.value.toUpperCase()"
+                   (blur)="ValidarSeguroSocial()"
+                   (click)="ClickSeguroSocial()" />
+            <div class="validation-warning"
+                 [hidden]="seguroSocialValido">
+                *El número de seguro social <br />consta de 11 caracteres alfanuméricos.
+            </div>
+            <div [hidden]="seguroSocialValido"
+                 class="validation-warning">
+                *El IMSS no concuerda con<br />la información proporcionada.
+            </div>
+            <div>
+                <a href="http://portal.infonavit.org.mx/wps/wcm/connect/Infonavit/Trabajadores/Obten+tu+Numero+de+Seguridad+Social+(NSS)/"
+                   target="_blank">
+                    Consultar
+                </a>
+            </div>
+        </div>
+        <!-- CURP -->
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   formControlName="curp"
+                  
+                   placeholder="CURP"
+                   
+                   (blur)="ValidandoCURP($event)"
+                   />
+            <div *ngIf="formDatosGenerales.controls.identificaciones.controls.curp.touched && formDatosGenerales.controls.identificaciones.controls.curp.invalid">
+                <div class="validation-error-message">
+                    *Campo requerido <br/>
+                    *La curp consta <br /> de 18 caracteres alfanuméricos.
+                </div>                
+            </div>
+            <div [hidden]="!curpValida"
+                 [class.validation-error-message]="curpValida">
+                *La CURP no concuerda con<br />la información proporcionada.
+            </div>
+            <div>
+                <a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp"
+                   target="_blank">
+                    Consultar
+                </a>
+            </div>
+        </div>
+        <!--RFC -->
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   formControlName="rfc"
+                   #rfc (input)="rfc.value=$event.target.value.toUpperCase()"
+                   placeholder="RFC"
+                   (blur)="ValidarRFC()"
+                   (click)="ClickRFC()" />
+            <div class="validation-warning"
+                 [hidden]="rfcValido">
+                *El RFC consta <br /> de 13 caracteres alfanuméricos.
+            </div>
+            <div [hidden]="rfcValido"
+                 class="validation-warning">
+                *El RFC no concuerda con<br />la información proporcionada.
+            </div>
+            <div>
+                <a href="https://www.siat.sat.gob.mx/PTSC/"
+                   target="_blank">Consultar</a>
+            </div>
+        </div>
+        <!-- TIENE LICENCIA DE CONDUCIR  -->
+        <div class="clear"> </div>
+        <div class="checkbox">
+            <label>¿Tiene licencia de conducir?</label>
+            <label>
+                <input id="tieneLicenciaConducir" type="checkbox"
+                       formControlName="tieneLicenciaConducir" 
+                       (click)="showTiposLicencias($event.target.checked)"
+                       />
+            </label>
+        </div>
+        
+        <!-- TIPOS DE LICENCIA -->
+        <div class="form-group">
+            <div [hidden]="!tieneLicencia">
+                <select class="form-control" id="select"
+                        formControlName="tipoLicenciaId">
+                    <option selected>Tipo de Licencia</option>
+                    <option *ngFor="let TipoLicencia of filteredTiposLicencia" value="{{TipoLicencia.id}}">
+                        {{TipoLicencia.tipoLicencia}}
+                    </option>
+
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <hr />
+    <button class="btn btn-prymary" type="submit"
+            [disabled]="!formDatosGenerales.valid && !telefonoValidate && !direccionNacimientoMexicanoValid"
+            [class.btn-success]="formDatosGenerales.valid && telefonoValidate && direccionNacimientoMexicanoValid">
+        Guardar
+    </button>
+    <a class="btn btn-primary" [hidden]="!canNavigateToPerfil" 
+       [routerLink]="['../','PerfilCandidato', {id:id}]"
+       [replaceUrl]="true">Perfil Profesional Candidato</a>
+
+</form>
+
+
+

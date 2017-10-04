@@ -17,8 +17,83 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
+}*/
+
+.field-validation-error{
+    color:red;
 }
+
+.input-validation-error{
+    border:2px, solid;
+    border-color:red;
+}
+
+.validation-error-message{
+  padding: 5px;
+  margin-bottom: 0px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color:red;
+}
+
+.validation-warning{
+  padding: 5px;
+  margin-bottom: 0px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color:orange;
+}
+   
+
+/*#region Formulario Alta Candidato */
+
+.clear{
+    clear:left;
+    padding:5px;
+}
+
+fieldset{
+    margin:15px;
+}
+.selectPlaceHolder{
+    color:#d0cdcd;
+    display:none;
+    
+}
+.clickable {
+    cursor: pointer;
+} 
+
+/*#endregion */
+
+/*input.ui-inputtext{
+  display: inline; 
+  height: 38px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}*/
+
+.selectPlaceholder{
+   color:darkgray;
+}
+
+.checkboxLabel{
+    margin-right: 2cm;
+    float:none;
+}
+

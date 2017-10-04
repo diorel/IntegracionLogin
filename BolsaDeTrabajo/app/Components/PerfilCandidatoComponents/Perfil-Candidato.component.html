@@ -1,0 +1,52 @@
+﻿
+	<form [formGroup]="PerfilCandidato" novalidate (ngSubmit)="save(PerfilCandidato)" class="form-inline">
+        <h1>{{title}}</h1>
+        <input type="text" value="" formControlName="id" hidden="hidden" />
+        <input type="text" value="" formControlName="candidatoId" hidden="hidden" />
+		<!--formaciones-->
+		<div formArrayName="formaciones">
+			<div *ngFor="let formacion of PerfilCandidato.controls.formaciones.controls; let i=index" class="panel panel-default">
+				<div class="panel-heading">
+                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.formaciones.controls.length > 1" (click)="removeFormacion(i)"></a>
+					<h4>Formación {{i + 1}}</h4>
+				</div>
+				<div class="panel-body" [formGroupName]="i">
+					<formaciones [group]="PerfilCandidato.controls.formaciones.controls[i]"></formaciones>
+				</div>
+			</div>
+		</div>
+		<div class="margin-20">
+			<a (click)="addFormacion()" style="cursor: default">
+				Agregar Formacion +
+			</a>
+		</div>
+		<div class="clear"></div>
+			<!--Idiomas-->
+			<div formArrayName="idiomas">
+				<div *ngFor="let idioma of PerfilCandidato.controls.idiomas.controls; let i=index" class="panel panel-default">
+					<div class="panel-heading">
+                        <a href="#" class="glyphicon glyphicon-remove pull-right clickable " *ngIf="PerfilCandidato.controls.idiomas.controls.length > 1" (click)="removeIdioma(i)"></a>
+						<h4>Idioma {{i + 1}}</h4>
+					</div>
+					<div class="panel-body" [formGroupName]="i">
+						<idiomas  [group]="PerfilCandidato.controls.idiomas.controls[i]"></idiomas>
+					</div>
+				</div>
+			</div>
+			<div class="margin-20">
+				<a (click)="addIdioma()" style="cursor: default">
+					Agregar Idioma +
+				</a>
+			</div>
+
+			<div class="margin-20">
+				<button type="submit" class="btn btn-primary pull-right" [disabled]="!PerfilCandidato.valid">Submit</button>
+			</div>
+			<div class="clearfix"></div>
+			<div class="margin-20">
+				<div>myForm details:-</div>
+				<pre>Is myForm valid?: <br>{{PerfilCandidato.valid | json}}</pre>
+				<pre>form value: <br>{{PerfilCandidato.value | json}}</pre>
+			</div>
+</form>
+

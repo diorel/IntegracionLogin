@@ -1,0 +1,97 @@
+﻿<div class="form-inline" [formGroup]="Formaciones">
+  
+     <div class="form-group">
+        <p-autoComplete formControlName="institucionEducativa"
+                        [suggestions]="filteredInstituciones"
+                        (completeMethod)="filterInstituciones($event)"
+                        field="institucionEducativa"
+                        [size]="24"
+                        placeholder="Institución"
+                        [minLength]="1"
+                        inputStyleClass="form-control"
+                        (onSelect)="SetInstitucionId($event)">
+
+        </p-autoComplete>
+         <input type="text" formControlName="institucionEducativaId" hidden="hidden" />
+         <div *ngIf="Formaciones.controls.institucionEducativa.touched && Formaciones.controls.institucionEducativaId.invalid">
+             <small class="validation-error-message">
+                 *Campo requerido seleccione una <br /> institución educativa de la lista.
+             </small>
+         </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="gradoEstudiosId"
+                 [class.selectPlaceholder]="!Formaciones.controls.gradoEstudiosId.touched">
+            <option selected hidden>Nivel de Estudios</option>
+            <option *ngFor="let grado of gradosEstudio" [value]="grado.id">{{grado.gradoEstudio}}</option>
+        </select>
+        <div *ngIf="Formaciones.controls.gradoEstudiosId.touched && Formaciones.controls.gradoEstudiosId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione<br /> un grado de la lista
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="estadoEstudioId"
+                 [class.selectPlaceholder]="!Formaciones.controls.estadoEstudioId.touched">
+            <option selected hidden>Estatus</option>
+            <option *ngFor="let estatu of Estatus" [value]="estatu.id">{{estatu.estadoEstudio}}</option>
+        </select>
+        <div *ngIf="Formaciones.controls.estadoEstudioId.touched && Formaciones.controls.estadoEstudioId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione <br /> un status de la lista
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="documentoValidadorId"
+                 [class.selectPlaceholder]="!Formaciones.controls.documentoValidadorId.touched">
+            <option selected hidden>Documento Validador</option>
+            <option *ngFor="let documento of documentosValidadores" [value]="documento.id">{{documento.documentoValidador}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <p-autoComplete formControlName="carrera"
+                        [suggestions]="filteredCarreras"
+                        (completeMethod)="filterCarreras($event)"
+                        field="carrera"
+                        [size]="24"
+                        placeholder="Carrera"
+                        [minLength]="1"
+                        inputStyleClass="form-control"
+                        (onSelect)="SetCarreraId($event)">
+
+        </p-autoComplete>
+        <input type="text" formControlName="carreraId" hidden="hidden" />
+    </div>
+    <div class="clear"></div>
+    <div class="form-group">
+        <label>Periodo de Inicio</label><br />
+        <select class="form-control" id="select" width="30" formControlName="yearInicioId"
+                [class.selectPlaceholder]="!Formaciones.controls.yearInicioId.touched"
+                >
+            <option selected hidden>Año Inicio</option>
+            <option *ngFor="let year of years" [value]="year.id">{{year.year}}</option>
+        </select>
+        <select class="form-control" id="select" width="30" formControlName="monthInicioId"
+                [class.selectPlaceholder]="!Formaciones.controls.monthInicioId.touched">
+            <option selected hidden>Mes Inicio</option>
+            <option *ngFor="let mes of meses" [value]="mes.id">{{mes.month}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Periodo de Termino</label><br />
+        <select class="form-control" id="select" width="30" formControlName="yearTerminoId"
+                 [class.selectPlaceholder]="!Formaciones.controls.yearTerminoId.touched"
+                >
+            <option selected hidden>Año Termino</option>
+            <option *ngFor="let year of years" [value]="year.id">{{year.year}}</option>
+        </select>
+        <select class="form-control" id="select" width="30" formControlName="monthTerminoId"
+                 [class.selectPlaceholder]="!Formaciones.controls.monthTerminoId.touched"
+                >
+            <option selected hidden>Mes Termino</option>
+            <option *ngFor="let mes of meses" [value]="mes.id">{{mes.month}}</option>
+        </select>
+    </div>
+</div>

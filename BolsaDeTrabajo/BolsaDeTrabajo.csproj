@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,11 +46,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -58,6 +96,30 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -67,40 +129,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -174,30 +208,543 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\BaseAPIController.cs" />
+    <Compile Include="Controllers\Api\CandidatosController.cs" />
+    <Compile Include="Controllers\Api\CarrerasController.cs" />
+    <Compile Include="Controllers\Api\CatalogosController.cs" />
+    <Compile Include="Controllers\Api\ColoniasController.cs" />
+    <Compile Include="Controllers\Api\DiscapacidadesController.cs" />
+    <Compile Include="Controllers\Api\DocumentosValidadoresController.cs" />
+    <Compile Include="Controllers\Api\EstadosController.cs" />
+    <Compile Include="Controllers\Api\EstadosEstudioController.cs" />
+    <Compile Include="Controllers\Api\GradosEstudioController.cs" />
+    <Compile Include="Controllers\Api\IdiomasController.cs" />
+    <Compile Include="Controllers\Api\InstitucionEducativaController.cs" />
+    <Compile Include="Controllers\Api\MonthsController.cs" />
+    <Compile Include="Controllers\Api\MunicipiosController.cs" />
+    <Compile Include="Controllers\Api\NivelesController.cs" />
+    <Compile Include="Controllers\Api\PaisesController.cs" />
+    <Compile Include="Controllers\Api\PalabrasInconvenientesController.cs" />
+    <Compile Include="Controllers\Api\PerfilCandidatoController.cs" />
+    <Compile Include="Controllers\Api\ProfileImageUploaderController.cs" />
+    <Compile Include="Controllers\Api\SexosController.cs" />
+    <Compile Include="Controllers\Api\TiposLicenciasController.cs" />
+    <Compile Include="Controllers\Api\YearsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Dtos\CandidatoDto.cs" />
+    <Compile Include="Dtos\ColoniaDto.cs" />
+    <Compile Include="Dtos\Date.cs" />
+    <Compile Include="Dtos\DatosPersonales.cs" />
+    <Compile Include="Dtos\DireccionDto.cs" />
+    <Compile Include="Dtos\EstadoCivilDto.cs" />
+    <Compile Include="Dtos\EstadoDto.cs" />
+    <Compile Include="Dtos\IdentificacionesDto.cs" />
+    <Compile Include="Dtos\MunicipioDto.cs" />
+    <Compile Include="Dtos\PaisDto.cs" />
+    <Compile Include="Dtos\PerfilCandidatoDto.cs" />
+    <Compile Include="Dtos\SexoDto.cs" />
+    <Compile Include="Dtos\TipoLicenciaDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708021737337_FirstMigration.cs" />
+    <Compile Include="Migrations\201708021737337_FirstMigration.Designer.cs">
+      <DependentUpon>201708021737337_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708022129122_SecondMigration.cs" />
+    <Compile Include="Migrations\201708022129122_SecondMigration.Designer.cs">
+      <DependentUpon>201708022129122_SecondMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708022302140_AddingColoniaModel.cs" />
+    <Compile Include="Migrations\201708022302140_AddingColoniaModel.Designer.cs">
+      <DependentUpon>201708022302140_AddingColoniaModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031549153_AddColoniaModel.cs" />
+    <Compile Include="Migrations\201708031549153_AddColoniaModel.Designer.cs">
+      <DependentUpon>201708031549153_AddColoniaModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031554457_AddCatalogosMenores.cs" />
+    <Compile Include="Migrations\201708031554457_AddCatalogosMenores.Designer.cs">
+      <DependentUpon>201708031554457_AddCatalogosMenores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031605442_ChangueNameTableTipoTelefonos.cs" />
+    <Compile Include="Migrations\201708031605442_ChangueNameTableTipoTelefonos.Designer.cs">
+      <DependentUpon>201708031605442_ChangueNameTableTipoTelefonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031623196_AddCatalogosPaises.cs" />
+    <Compile Include="Migrations\201708031623196_AddCatalogosPaises.Designer.cs">
+      <DependentUpon>201708031623196_AddCatalogosPaises.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031629447_AddCatalogoEstados.cs" />
+    <Compile Include="Migrations\201708031629447_AddCatalogoEstados.Designer.cs">
+      <DependentUpon>201708031629447_AddCatalogoEstados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031634160_AddCatalogoMunicipios.cs" />
+    <Compile Include="Migrations\201708031634160_AddCatalogoMunicipios.Designer.cs">
+      <DependentUpon>201708031634160_AddCatalogoMunicipios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031649129_LimpiarCatalogosPaisesyEstados.cs" />
+    <Compile Include="Migrations\201708031649129_LimpiarCatalogosPaisesyEstados.Designer.cs">
+      <DependentUpon>201708031649129_LimpiarCatalogosPaisesyEstados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031655501_AddCatalogoPaises2.cs" />
+    <Compile Include="Migrations\201708031655501_AddCatalogoPaises2.Designer.cs">
+      <DependentUpon>201708031655501_AddCatalogoPaises2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031658505_AddCatalogoEstados2.cs" />
+    <Compile Include="Migrations\201708031658505_AddCatalogoEstados2.Designer.cs">
+      <DependentUpon>201708031658505_AddCatalogoEstados2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031700414_AddCatalogoMunicipios1.cs" />
+    <Compile Include="Migrations\201708031700414_AddCatalogoMunicipios1.Designer.cs">
+      <DependentUpon>201708031700414_AddCatalogoMunicipios1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031707376_AddColoniasWhitPC.cs" />
+    <Compile Include="Migrations\201708031707376_AddColoniasWhitPC.Designer.cs">
+      <DependentUpon>201708031707376_AddColoniasWhitPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031826473_Colonias2.cs" />
+    <Compile Include="Migrations\201708031826473_Colonias2.Designer.cs">
+      <DependentUpon>201708031826473_Colonias2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031828449_Colonias3.cs" />
+    <Compile Include="Migrations\201708031828449_Colonias3.Designer.cs">
+      <DependentUpon>201708031828449_Colonias3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031829252_Colonias4.cs" />
+    <Compile Include="Migrations\201708031829252_Colonias4.Designer.cs">
+      <DependentUpon>201708031829252_Colonias4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031835496_Colonias5.cs" />
+    <Compile Include="Migrations\201708031835496_Colonias5.Designer.cs">
+      <DependentUpon>201708031835496_Colonias5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031845372_Colonias6.cs" />
+    <Compile Include="Migrations\201708031845372_Colonias6.Designer.cs">
+      <DependentUpon>201708031845372_Colonias6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031904545_Colonias7.cs" />
+    <Compile Include="Migrations\201708031904545_Colonias7.Designer.cs">
+      <DependentUpon>201708031904545_Colonias7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031909428_LimpiarColonias.cs" />
+    <Compile Include="Migrations\201708031909428_LimpiarColonias.Designer.cs">
+      <DependentUpon>201708031909428_LimpiarColonias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031941257_ColoniasRestructuración.cs" />
+    <Compile Include="Migrations\201708031941257_ColoniasRestructuración.Designer.cs">
+      <DependentUpon>201708031941257_ColoniasRestructuración.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708031953443_ColoniasRestructuración2.cs" />
+    <Compile Include="Migrations\201708031953443_ColoniasRestructuración2.Designer.cs">
+      <DependentUpon>201708031953443_ColoniasRestructuración2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708042110040_Colonias 1.cs" />
+    <Compile Include="Migrations\201708042110040_Colonias 1.Designer.cs">
+      <DependentUpon>201708042110040_Colonias 1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708042205011_Colonia 2.cs" />
+    <Compile Include="Migrations\201708042205011_Colonia 2.Designer.cs">
+      <DependentUpon>201708042205011_Colonia 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708042205484_Colonia 3.cs" />
+    <Compile Include="Migrations\201708042205484_Colonia 3.Designer.cs">
+      <DependentUpon>201708042205484_Colonia 3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708042212285_Colonia 5.cs" />
+    <Compile Include="Migrations\201708042212285_Colonia 5.Designer.cs">
+      <DependentUpon>201708042212285_Colonia 5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708072227270_Recovery1.cs" />
+    <Compile Include="Migrations\201708072227270_Recovery1.Designer.cs">
+      <DependentUpon>201708072227270_Recovery1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708081645010_AddModeloTipoLicencia.cs" />
+    <Compile Include="Migrations\201708081645010_AddModeloTipoLicencia.Designer.cs">
+      <DependentUpon>201708081645010_AddModeloTipoLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708081659206_ChangueTipoLicenciaModel.cs" />
+    <Compile Include="Migrations\201708081659206_ChangueTipoLicenciaModel.Designer.cs">
+      <DependentUpon>201708081659206_ChangueTipoLicenciaModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708081709475_acentoTipoLicencia.cs" />
+    <Compile Include="Migrations\201708081709475_acentoTipoLicencia.Designer.cs">
+      <DependentUpon>201708081709475_acentoTipoLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708081739324_CatalogoTiposLicencias.cs" />
+    <Compile Include="Migrations\201708081739324_CatalogoTiposLicencias.Designer.cs">
+      <DependentUpon>201708081739324_CatalogoTiposLicencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708082325050_RenameTiposLicencias.cs" />
+    <Compile Include="Migrations\201708082325050_RenameTiposLicencias.Designer.cs">
+      <DependentUpon>201708082325050_RenameTiposLicencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708082328548_changuedTipoLicencia.cs" />
+    <Compile Include="Migrations\201708082328548_changuedTipoLicencia.Designer.cs">
+      <DependentUpon>201708082328548_changuedTipoLicencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708091915323_AddTipoDiscapacidadModelo.cs" />
+    <Compile Include="Migrations\201708091915323_AddTipoDiscapacidadModelo.Designer.cs">
+      <DependentUpon>201708091915323_AddTipoDiscapacidadModelo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708091923254_CatalogoDiscapacidades.cs" />
+    <Compile Include="Migrations\201708091923254_CatalogoDiscapacidades.Designer.cs">
+      <DependentUpon>201708091923254_CatalogoDiscapacidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231646228_VirtualCandidato.cs" />
+    <Compile Include="Migrations\201708231646228_VirtualCandidato.Designer.cs">
+      <DependentUpon>201708231646228_VirtualCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231836524_dropTipoLicencia_Id.cs" />
+    <Compile Include="Migrations\201708231836524_dropTipoLicencia_Id.Designer.cs">
+      <DependentUpon>201708231836524_dropTipoLicencia_Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231843478_TipoLicenciaProblem.cs" />
+    <Compile Include="Migrations\201708231843478_TipoLicenciaProblem.Designer.cs">
+      <DependentUpon>201708231843478_TipoLicenciaProblem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231856046_deletingvirtuals.cs" />
+    <Compile Include="Migrations\201708231856046_deletingvirtuals.Designer.cs">
+      <DependentUpon>201708231856046_deletingvirtuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231909327_CandidatosRelaciones.cs" />
+    <Compile Include="Migrations\201708231909327_CandidatosRelaciones.Designer.cs">
+      <DependentUpon>201708231909327_CandidatosRelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231930469_dropcandidatosrelaciones.cs" />
+    <Compile Include="Migrations\201708231930469_dropcandidatosrelaciones.Designer.cs">
+      <DependentUpon>201708231930469_dropcandidatosrelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231938354_PersonaRelationsCandidatos.cs" />
+    <Compile Include="Migrations\201708231938354_PersonaRelationsCandidatos.Designer.cs">
+      <DependentUpon>201708231938354_PersonaRelationsCandidatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708282208002_migration.0.1.cs" />
+    <Compile Include="Migrations\201708282208002_migration.0.1.Designer.cs">
+      <DependentUpon>201708282208002_migration.0.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708282250578_migration.0.02.cs" />
+    <Compile Include="Migrations\201708282250578_migration.0.02.Designer.cs">
+      <DependentUpon>201708282250578_migration.0.02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291717261_migration.0.03.cs" />
+    <Compile Include="Migrations\201708291717261_migration.0.03.Designer.cs">
+      <DependentUpon>201708291717261_migration.0.03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291722200_migration.0.04.cs" />
+    <Compile Include="Migrations\201708291722200_migration.0.04.Designer.cs">
+      <DependentUpon>201708291722200_migration.0.04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291804137_migration.0.05.cs" />
+    <Compile Include="Migrations\201708291804137_migration.0.05.Designer.cs">
+      <DependentUpon>201708291804137_migration.0.05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708311955341_migration.0.06.cs" />
+    <Compile Include="Migrations\201708311955341_migration.0.06.Designer.cs">
+      <DependentUpon>201708311955341_migration.0.06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709011739278_migration.0.07.cs" />
+    <Compile Include="Migrations\201709011739278_migration.0.07.Designer.cs">
+      <DependentUpon>201709011739278_migration.0.07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709051515026_migration.0.08.cs" />
+    <Compile Include="Migrations\201709051515026_migration.0.08.Designer.cs">
+      <DependentUpon>201709051515026_migration.0.08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709051532507_migration.0.09.cs" />
+    <Compile Include="Migrations\201709051532507_migration.0.09.Designer.cs">
+      <DependentUpon>201709051532507_migration.0.09.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709052308321_migration.0.10.cs" />
+    <Compile Include="Migrations\201709052308321_migration.0.10.Designer.cs">
+      <DependentUpon>201709052308321_migration.0.10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709061612109_migration.0.11.cs" />
+    <Compile Include="Migrations\201709061612109_migration.0.11.Designer.cs">
+      <DependentUpon>201709061612109_migration.0.11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709072022525_migration.0.12.cs" />
+    <Compile Include="Migrations\201709072022525_migration.0.12.Designer.cs">
+      <DependentUpon>201709072022525_migration.0.12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131620551_Migration.0.13.cs" />
+    <Compile Include="Migrations\201709131620551_Migration.0.13.Designer.cs">
+      <DependentUpon>201709131620551_Migration.0.13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131622193_Migration.AddPalabrasInconvenientes.cs" />
+    <Compile Include="Migrations\201709131622193_Migration.AddPalabrasInconvenientes.Designer.cs">
+      <DependentUpon>201709131622193_Migration.AddPalabrasInconvenientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131811089_migration.0.14.cs" />
+    <Compile Include="Migrations\201709131811089_migration.0.14.Designer.cs">
+      <DependentUpon>201709131811089_migration.0.14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131826564_migration.0.15.cs" />
+    <Compile Include="Migrations\201709131826564_migration.0.15.Designer.cs">
+      <DependentUpon>201709131826564_migration.0.15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709151930558_ClaveEstado.cs" />
+    <Compile Include="Migrations\201709151930558_ClaveEstado.Designer.cs">
+      <DependentUpon>201709151930558_ClaveEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709182049281_IdiomaNiveles.cs" />
+    <Compile Include="Migrations\201709182049281_IdiomaNiveles.Designer.cs">
+      <DependentUpon>201709182049281_IdiomaNiveles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709211827414_MigrationPerfilCandidato.cs" />
+    <Compile Include="Migrations\201709211827414_MigrationPerfilCandidato.Designer.cs">
+      <DependentUpon>201709211827414_MigrationPerfilCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709212007335_CatalogosPerfiles.cs" />
+    <Compile Include="Migrations\201709212007335_CatalogosPerfiles.Designer.cs">
+      <DependentUpon>201709212007335_CatalogosPerfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221732505_CatalogosPerfilCandidato.cs" />
+    <Compile Include="Migrations\201709221732505_CatalogosPerfilCandidato.Designer.cs">
+      <DependentUpon>201709221732505_CatalogosPerfilCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221747123_gradosEstudiodown.cs" />
+    <Compile Include="Migrations\201709221747123_gradosEstudiodown.Designer.cs">
+      <DependentUpon>201709221747123_gradosEstudiodown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221747589_MigracionGradoEstidios.cs" />
+    <Compile Include="Migrations\201709221747589_MigracionGradoEstidios.Designer.cs">
+      <DependentUpon>201709221747589_MigracionGradoEstidios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221756531_GradoEstudiosModify.cs" />
+    <Compile Include="Migrations\201709221756531_GradoEstudiosModify.Designer.cs">
+      <DependentUpon>201709221756531_GradoEstudiosModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221759217_GradoEstudiosint16.cs" />
+    <Compile Include="Migrations\201709221759217_GradoEstudiosint16.Designer.cs">
+      <DependentUpon>201709221759217_GradoEstudiosint16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221801346_migrationGradoEstudiosInt.cs" />
+    <Compile Include="Migrations\201709221801346_migrationGradoEstudiosInt.Designer.cs">
+      <DependentUpon>201709221801346_migrationGradoEstudiosInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221803322_GradoEstudisoInt162.cs" />
+    <Compile Include="Migrations\201709221803322_GradoEstudisoInt162.Designer.cs">
+      <DependentUpon>201709221803322_GradoEstudisoInt162.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221807405_DeleteGradoEstudios.cs" />
+    <Compile Include="Migrations\201709221807405_DeleteGradoEstudios.Designer.cs">
+      <DependentUpon>201709221807405_DeleteGradoEstudios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221809355_gradoEstudio.cs" />
+    <Compile Include="Migrations\201709221809355_gradoEstudio.Designer.cs">
+      <DependentUpon>201709221809355_gradoEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221814493_CatalogoGradosEstudio.cs" />
+    <Compile Include="Migrations\201709221814493_CatalogoGradosEstudio.Designer.cs">
+      <DependentUpon>201709221814493_CatalogoGradosEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221821041_CatalogoInstitucionesEducativas.cs" />
+    <Compile Include="Migrations\201709221821041_CatalogoInstitucionesEducativas.Designer.cs">
+      <DependentUpon>201709221821041_CatalogoInstitucionesEducativas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221827150_CatalogoInstitucionesEducativas1.cs" />
+    <Compile Include="Migrations\201709221827150_CatalogoInstitucionesEducativas1.Designer.cs">
+      <DependentUpon>201709221827150_CatalogoInstitucionesEducativas1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221830004_DropEstadoEstudios.cs" />
+    <Compile Include="Migrations\201709221830004_DropEstadoEstudios.Designer.cs">
+      <DependentUpon>201709221830004_DropEstadoEstudios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221836596_EstatusEstudio.cs" />
+    <Compile Include="Migrations\201709221836596_EstatusEstudio.Designer.cs">
+      <DependentUpon>201709221836596_EstatusEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221839002_catalogoEstadosEstudios.cs" />
+    <Compile Include="Migrations\201709221839002_catalogoEstadosEstudios.Designer.cs">
+      <DependentUpon>201709221839002_catalogoEstadosEstudios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221840213_Documentosvalidadores.cs" />
+    <Compile Include="Migrations\201709221840213_Documentosvalidadores.Designer.cs">
+      <DependentUpon>201709221840213_Documentosvalidadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221852306_carreras.cs" />
+    <Compile Include="Migrations\201709221852306_carreras.Designer.cs">
+      <DependentUpon>201709221852306_carreras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221913011_MesesCatalogos.cs" />
+    <Compile Include="Migrations\201709221913011_MesesCatalogos.Designer.cs">
+      <DependentUpon>201709221913011_MesesCatalogos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221918462_MonthModify.cs" />
+    <Compile Include="Migrations\201709221918462_MonthModify.Designer.cs">
+      <DependentUpon>201709221918462_MonthModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221921263_monthsdroped.cs" />
+    <Compile Include="Migrations\201709221921263_monthsdroped.Designer.cs">
+      <DependentUpon>201709221921263_monthsdroped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221922416_monthsNew.cs" />
+    <Compile Include="Migrations\201709221922416_monthsNew.Designer.cs">
+      <DependentUpon>201709221922416_monthsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221923421_monthsnews.cs" />
+    <Compile Include="Migrations\201709221923421_monthsnews.Designer.cs">
+      <DependentUpon>201709221923421_monthsnews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221924411_catalogomeses.cs" />
+    <Compile Include="Migrations\201709221924411_catalogomeses.Designer.cs">
+      <DependentUpon>201709221924411_catalogomeses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709221930046_YearsCatalogo.cs" />
+    <Compile Include="Migrations\201709221930046_YearsCatalogo.Designer.cs">
+      <DependentUpon>201709221930046_YearsCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709271840159_FormacionCambioPeriodos.cs" />
+    <Compile Include="Migrations\201709271840159_FormacionCambioPeriodos.Designer.cs">
+      <DependentUpon>201709271840159_FormacionCambioPeriodos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281556216_PerfilCandidatoPrueba.cs" />
+    <Compile Include="Migrations\201709281556216_PerfilCandidatoPrueba.Designer.cs">
+      <DependentUpon>201709281556216_PerfilCandidatoPrueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281617436_One-to-Many.cs" />
+    <Compile Include="Migrations\201709281617436_One-to-Many.Designer.cs">
+      <DependentUpon>201709281617436_One-to-Many.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281749516_formacion-perfil.cs" />
+    <Compile Include="Migrations\201709281749516_formacion-perfil.Designer.cs">
+      <DependentUpon>201709281749516_formacion-perfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281845375_perfilcanidatolistas.cs" />
+    <Compile Include="Migrations\201709281845375_perfilcanidatolistas.Designer.cs">
+      <DependentUpon>201709281845375_perfilcanidatolistas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281909006_PerfilcandidatoListasNuevas.cs" />
+    <Compile Include="Migrations\201709281909006_PerfilcandidatoListasNuevas.Designer.cs">
+      <DependentUpon>201709281909006_PerfilcandidatoListasNuevas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281913066_tratandodejuntarlascitas.cs" />
+    <Compile Include="Migrations\201709281913066_tratandodejuntarlascitas.Designer.cs">
+      <DependentUpon>201709281913066_tratandodejuntarlascitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709281944417_Cambielainstitucioneducativa.cs" />
+    <Compile Include="Migrations\201709281944417_Cambielainstitucioneducativa.Designer.cs">
+      <DependentUpon>201709281944417_Cambielainstitucioneducativa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282016035_otramigracionahorainstitucioneseducativas.cs" />
+    <Compile Include="Migrations\201709282016035_otramigracionahorainstitucioneseducativas.Designer.cs">
+      <DependentUpon>201709282016035_otramigracionahorainstitucioneseducativas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282207277_Institucioneducativarename.cs" />
+    <Compile Include="Migrations\201709282207277_Institucioneducativarename.Designer.cs">
+      <DependentUpon>201709282207277_Institucioneducativarename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282222063_catalogoinstitucioneseducativasagain.cs" />
+    <Compile Include="Migrations\201709282222063_catalogoinstitucioneseducativasagain.Designer.cs">
+      <DependentUpon>201709282222063_catalogoinstitucioneseducativasagain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710032159125_AddProfileImage.cs" />
+    <Compile Include="Migrations\201710032159125_AddProfileImage.Designer.cs">
+      <DependentUpon>201710032159125_AddProfileImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710041419467_ProfileImageURlDefautlValue.cs" />
+    <Compile Include="Migrations\201710041419467_ProfileImageURlDefautlValue.Designer.cs">
+      <DependentUpon>201710041419467_ProfileImageURlDefautlValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\Candidato.cs" />
+    <Compile Include="Models\CandidatoConocimientoInformatico.cs" />
+    <Compile Include="Models\Cargo.cs" />
+    <Compile Include="Models\Carrera.cs" />
+    <Compile Include="Models\Colonia.cs" />
+    <Compile Include="Models\ConocimientoInformatico.cs" />
+    <Compile Include="Models\Direccion.cs" />
+    <Compile Include="Models\DireccionTipo.cs" />
+    <Compile Include="Models\DocumentoValidador.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\EstadoCivil.cs" />
+    <Compile Include="Models\EstadoEstudio.cs" />
+    <Compile Include="Models\ExperienciaProfesional.cs" />
+    <Compile Include="Models\Formacion.cs" />
+    <Compile Include="Models\FormaContacto.cs" />
+    <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\GiroEmpresa.cs" />
+    <Compile Include="Models\GradoEstudio.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Idioma.cs" />
+    <Compile Include="Models\InstitucionEducativa.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelsReclutamiento\ActividadClienteModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\ClaseReclutamientoModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\ClientesModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\ContactosModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\DiasSemanaModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\HorarioPerfilModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\PerfilesReclutamientoModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\RutaCamionModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\TamanoEmpresaModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\TipoEmpresaModel.cs" />
+    <Compile Include="Models\ModelsReclutamiento\TipoReclutamientoModel.cs" />
+    <Compile Include="Models\Month.cs" />
+    <Compile Include="Models\Municipio.cs" />
+    <Compile Include="Models\Nivel.cs" />
+    <Compile Include="Models\NombresComunes.cs" />
+    <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\PalabraEscluida.cs" />
+    <Compile Include="Models\PalabraInconveniente.cs" />
+    <Compile Include="Models\PerfilCandidato.cs" />
+    <Compile Include="Models\PerfilIdioma.cs" />
+    <Compile Include="Models\PerfilProfesional.cs" />
+    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Porcentage.cs" />
+    <Compile Include="Models\Telefono.cs" />
+    <Compile Include="Models\TipoDiscapacidad.cs" />
+    <Compile Include="Models\TipoLicencia.cs" />
+    <Compile Include="Models\TipoTelefono.cs" />
+    <Compile Include="Models\ValidarSitioWeb.cs" />
+    <Compile Include="Models\ValidWebSite.cs" />
+    <Compile Include="Models\Year.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\Utilerias.cs" />
+    <Compile Include="ViewModels\CandidatoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Components\Alta.Candidato.component.html" />
+    <Content Include="app\Components\app.component.html" />
+    <Content Include="app\Components\ImageProfile\imageProfile.upload.component.css" />
+    <Content Include="app\Components\ImageProfile\imageProfile.upload.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\FormacionComponent\Formacion.component.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\IdiomaComponent\Idioma.component.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\Perfil-Candidato.component.html" />
+    <Content Include="app\Components\TablaCandidatos\CandidatosTable.html" />
+    <Content Include="Content\bootstrap-cerulean.css" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="PerfilImagenes\error1.png.png" />
+    <Content Include="PerfilImagenes\Mulan.jpg" />
+    <Content Include="PerfilImagenes\Mulan.jpg.jpg" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-select.css.map" />
+    <Content Include="package.json" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -210,6 +757,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -244,9 +792,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CandidatoProfilePicture\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -256,11 +806,354 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708021737337_FirstMigration.resx">
+      <DependentUpon>201708021737337_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708022129122_SecondMigration.resx">
+      <DependentUpon>201708022129122_SecondMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708022302140_AddingColoniaModel.resx">
+      <DependentUpon>201708022302140_AddingColoniaModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031549153_AddColoniaModel.resx">
+      <DependentUpon>201708031549153_AddColoniaModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031554457_AddCatalogosMenores.resx">
+      <DependentUpon>201708031554457_AddCatalogosMenores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031605442_ChangueNameTableTipoTelefonos.resx">
+      <DependentUpon>201708031605442_ChangueNameTableTipoTelefonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031623196_AddCatalogosPaises.resx">
+      <DependentUpon>201708031623196_AddCatalogosPaises.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031629447_AddCatalogoEstados.resx">
+      <DependentUpon>201708031629447_AddCatalogoEstados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031634160_AddCatalogoMunicipios.resx">
+      <DependentUpon>201708031634160_AddCatalogoMunicipios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031649129_LimpiarCatalogosPaisesyEstados.resx">
+      <DependentUpon>201708031649129_LimpiarCatalogosPaisesyEstados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031655501_AddCatalogoPaises2.resx">
+      <DependentUpon>201708031655501_AddCatalogoPaises2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031658505_AddCatalogoEstados2.resx">
+      <DependentUpon>201708031658505_AddCatalogoEstados2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031700414_AddCatalogoMunicipios1.resx">
+      <DependentUpon>201708031700414_AddCatalogoMunicipios1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031707376_AddColoniasWhitPC.resx">
+      <DependentUpon>201708031707376_AddColoniasWhitPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031826473_Colonias2.resx">
+      <DependentUpon>201708031826473_Colonias2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031828449_Colonias3.resx">
+      <DependentUpon>201708031828449_Colonias3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031829252_Colonias4.resx">
+      <DependentUpon>201708031829252_Colonias4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031835496_Colonias5.resx">
+      <DependentUpon>201708031835496_Colonias5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031845372_Colonias6.resx">
+      <DependentUpon>201708031845372_Colonias6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031904545_Colonias7.resx">
+      <DependentUpon>201708031904545_Colonias7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031909428_LimpiarColonias.resx">
+      <DependentUpon>201708031909428_LimpiarColonias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031941257_ColoniasRestructuración.resx">
+      <DependentUpon>201708031941257_ColoniasRestructuración.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031953443_ColoniasRestructuración2.resx">
+      <DependentUpon>201708031953443_ColoniasRestructuración2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708042110040_Colonias 1.resx">
+      <DependentUpon>201708042110040_Colonias 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708042205011_Colonia 2.resx">
+      <DependentUpon>201708042205011_Colonia 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708042205484_Colonia 3.resx">
+      <DependentUpon>201708042205484_Colonia 3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708042212285_Colonia 5.resx">
+      <DependentUpon>201708042212285_Colonia 5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708072227270_Recovery1.resx">
+      <DependentUpon>201708072227270_Recovery1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708081645010_AddModeloTipoLicencia.resx">
+      <DependentUpon>201708081645010_AddModeloTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708081659206_ChangueTipoLicenciaModel.resx">
+      <DependentUpon>201708081659206_ChangueTipoLicenciaModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708081709475_acentoTipoLicencia.resx">
+      <DependentUpon>201708081709475_acentoTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708081739324_CatalogoTiposLicencias.resx">
+      <DependentUpon>201708081739324_CatalogoTiposLicencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708082325050_RenameTiposLicencias.resx">
+      <DependentUpon>201708082325050_RenameTiposLicencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708082328548_changuedTipoLicencia.resx">
+      <DependentUpon>201708082328548_changuedTipoLicencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708091915323_AddTipoDiscapacidadModelo.resx">
+      <DependentUpon>201708091915323_AddTipoDiscapacidadModelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708091923254_CatalogoDiscapacidades.resx">
+      <DependentUpon>201708091923254_CatalogoDiscapacidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231646228_VirtualCandidato.resx">
+      <DependentUpon>201708231646228_VirtualCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231836524_dropTipoLicencia_Id.resx">
+      <DependentUpon>201708231836524_dropTipoLicencia_Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231843478_TipoLicenciaProblem.resx">
+      <DependentUpon>201708231843478_TipoLicenciaProblem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231856046_deletingvirtuals.resx">
+      <DependentUpon>201708231856046_deletingvirtuals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231909327_CandidatosRelaciones.resx">
+      <DependentUpon>201708231909327_CandidatosRelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231930469_dropcandidatosrelaciones.resx">
+      <DependentUpon>201708231930469_dropcandidatosrelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231938354_PersonaRelationsCandidatos.resx">
+      <DependentUpon>201708231938354_PersonaRelationsCandidatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708282208002_migration.0.1.resx">
+      <DependentUpon>201708282208002_migration.0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708282250578_migration.0.02.resx">
+      <DependentUpon>201708282250578_migration.0.02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291717261_migration.0.03.resx">
+      <DependentUpon>201708291717261_migration.0.03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291722200_migration.0.04.resx">
+      <DependentUpon>201708291722200_migration.0.04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291804137_migration.0.05.resx">
+      <DependentUpon>201708291804137_migration.0.05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708311955341_migration.0.06.resx">
+      <DependentUpon>201708311955341_migration.0.06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709011739278_migration.0.07.resx">
+      <DependentUpon>201709011739278_migration.0.07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709051515026_migration.0.08.resx">
+      <DependentUpon>201709051515026_migration.0.08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709051532507_migration.0.09.resx">
+      <DependentUpon>201709051532507_migration.0.09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709052308321_migration.0.10.resx">
+      <DependentUpon>201709052308321_migration.0.10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709061612109_migration.0.11.resx">
+      <DependentUpon>201709061612109_migration.0.11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709072022525_migration.0.12.resx">
+      <DependentUpon>201709072022525_migration.0.12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131620551_Migration.0.13.resx">
+      <DependentUpon>201709131620551_Migration.0.13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131622193_Migration.AddPalabrasInconvenientes.resx">
+      <DependentUpon>201709131622193_Migration.AddPalabrasInconvenientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131811089_migration.0.14.resx">
+      <DependentUpon>201709131811089_migration.0.14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131826564_migration.0.15.resx">
+      <DependentUpon>201709131826564_migration.0.15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709151930558_ClaveEstado.resx">
+      <DependentUpon>201709151930558_ClaveEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709182049281_IdiomaNiveles.resx">
+      <DependentUpon>201709182049281_IdiomaNiveles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211827414_MigrationPerfilCandidato.resx">
+      <DependentUpon>201709211827414_MigrationPerfilCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709212007335_CatalogosPerfiles.resx">
+      <DependentUpon>201709212007335_CatalogosPerfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221732505_CatalogosPerfilCandidato.resx">
+      <DependentUpon>201709221732505_CatalogosPerfilCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221747123_gradosEstudiodown.resx">
+      <DependentUpon>201709221747123_gradosEstudiodown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221747589_MigracionGradoEstidios.resx">
+      <DependentUpon>201709221747589_MigracionGradoEstidios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221756531_GradoEstudiosModify.resx">
+      <DependentUpon>201709221756531_GradoEstudiosModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221759217_GradoEstudiosint16.resx">
+      <DependentUpon>201709221759217_GradoEstudiosint16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221801346_migrationGradoEstudiosInt.resx">
+      <DependentUpon>201709221801346_migrationGradoEstudiosInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221803322_GradoEstudisoInt162.resx">
+      <DependentUpon>201709221803322_GradoEstudisoInt162.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221807405_DeleteGradoEstudios.resx">
+      <DependentUpon>201709221807405_DeleteGradoEstudios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221809355_gradoEstudio.resx">
+      <DependentUpon>201709221809355_gradoEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221814493_CatalogoGradosEstudio.resx">
+      <DependentUpon>201709221814493_CatalogoGradosEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221821041_CatalogoInstitucionesEducativas.resx">
+      <DependentUpon>201709221821041_CatalogoInstitucionesEducativas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221827150_CatalogoInstitucionesEducativas1.resx">
+      <DependentUpon>201709221827150_CatalogoInstitucionesEducativas1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221830004_DropEstadoEstudios.resx">
+      <DependentUpon>201709221830004_DropEstadoEstudios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221836596_EstatusEstudio.resx">
+      <DependentUpon>201709221836596_EstatusEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221839002_catalogoEstadosEstudios.resx">
+      <DependentUpon>201709221839002_catalogoEstadosEstudios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221840213_Documentosvalidadores.resx">
+      <DependentUpon>201709221840213_Documentosvalidadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221852306_carreras.resx">
+      <DependentUpon>201709221852306_carreras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221913011_MesesCatalogos.resx">
+      <DependentUpon>201709221913011_MesesCatalogos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221918462_MonthModify.resx">
+      <DependentUpon>201709221918462_MonthModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221921263_monthsdroped.resx">
+      <DependentUpon>201709221921263_monthsdroped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221922416_monthsNew.resx">
+      <DependentUpon>201709221922416_monthsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221923421_monthsnews.resx">
+      <DependentUpon>201709221923421_monthsnews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221924411_catalogomeses.resx">
+      <DependentUpon>201709221924411_catalogomeses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221930046_YearsCatalogo.resx">
+      <DependentUpon>201709221930046_YearsCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709271840159_FormacionCambioPeriodos.resx">
+      <DependentUpon>201709271840159_FormacionCambioPeriodos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281556216_PerfilCandidatoPrueba.resx">
+      <DependentUpon>201709281556216_PerfilCandidatoPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281617436_One-to-Many.resx">
+      <DependentUpon>201709281617436_One-to-Many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281749516_formacion-perfil.resx">
+      <DependentUpon>201709281749516_formacion-perfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281845375_perfilcanidatolistas.resx">
+      <DependentUpon>201709281845375_perfilcanidatolistas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281909006_PerfilcandidatoListasNuevas.resx">
+      <DependentUpon>201709281909006_PerfilcandidatoListasNuevas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281913066_tratandodejuntarlascitas.resx">
+      <DependentUpon>201709281913066_tratandodejuntarlascitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709281944417_Cambielainstitucioneducativa.resx">
+      <DependentUpon>201709281944417_Cambielainstitucioneducativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282016035_otramigracionahorainstitucioneseducativas.resx">
+      <DependentUpon>201709282016035_otramigracionahorainstitucioneseducativas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282207277_Institucioneducativarename.resx">
+      <DependentUpon>201709282207277_Institucioneducativarename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282222063_catalogoinstitucioneseducativasagain.resx">
+      <DependentUpon>201709282222063_catalogoinstitucioneseducativasagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032159125_AddProfileImage.resx">
+      <DependentUpon>201710032159125_AddProfileImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041419467_ProfileImageURlDefautlValue.resx">
+      <DependentUpon>201710041419467_ProfileImageURlDefautlValue.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\Components\alta.candidato.component.ts" />
+    <TypeScriptCompile Include="app\Components\alta.candidato.validators.ts" />
+    <TypeScriptCompile Include="app\Components\ImageProfile\imageProfile-Upload.component.ts" />
+    <TypeScriptCompile Include="app\Components\OnlyNumbers.Directive.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\FormacionComponent\Formacion.Component.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\IdiomaComponent\idioma.component.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\perfil-candidato.component.ts" />
+    <TypeScriptCompile Include="app\Components\TablaCandidatos\CandidatosTable.component.ts" />
+    <TypeScriptCompile Include="app\Components\not-found.component.ts" />
+    <TypeScriptCompile Include="app\Components\Validators\CURP.validator.ts" />
+    <TypeScriptCompile Include="app\Directives\OnlyLetters.directive.ts" />
+    <TypeScriptCompile Include="app\Directives\OnlyNumbers.Directive.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\Models\Candidato.ts" />
+    <TypeScriptCompile Include="app\Models\ICandidato.ts" />
+    <TypeScriptCompile Include="app\Models\IEstado.ts" />
+    <TypeScriptCompile Include="app\Models\IEstadoCivil.ts" />
+    <TypeScriptCompile Include="app\Models\IMunicipio.ts" />
+    <TypeScriptCompile Include="app\Models\IPais.ts" />
+    <TypeScriptCompile Include="app\Models\IGenero.ts" />
+    <TypeScriptCompile Include="app\Models\IPalabraInconveniente.ts" />
+    <TypeScriptCompile Include="app\Models\ITipoDiscapacidad.ts" />
+    <TypeScriptCompile Include="app\Models\ITipoLicencia.ts" />
+    <TypeScriptCompile Include="app\Models\IValidState.ts" />
+    <TypeScriptCompile Include="app\Models\munettFormat.ts" />
+    <TypeScriptCompile Include="app\Models\PerfilCandidato.ts" />
+    <TypeScriptCompile Include="app\Services\Candidatos.Service.ts" />
+    <TypeScriptCompile Include="app\Services\catalogos.service.ts" />
+    <TypeScriptCompile Include="app\Services\PerfilCandidato.Service.ts" />
+    <TypeScriptCompile Include="app\Services\ProfileImage.service.ts" />
+    <TypeScriptCompile Include="app\Services\ValidacionIdentificaciones.service.ts" />
+    <TypeScriptCompile Include="app\Shared\ApiCatalogos.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

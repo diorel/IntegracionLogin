@@ -1,0 +1,29 @@
+﻿<h1>Candidatos</h1>
+<a class="btn btn-primary" (click)="NewCandidato()">Add Candidato</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>ApellidoPaterno</th> 
+            <th>ApellidoMaterno</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let candidato of candidatos">
+            <td>{{candidato.nombre}}</td>
+            <td>{{candidato.apellidoPaterno}}</td>
+            <td>{{candidato.apellidoMaterno}}</td> 
+            <td>
+                <a class="glyphicon glyphicon-edit" aria-hidden="true"
+                   [routerLink]="['altaCandidato', {id: candidato.id}]"></a>
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-remove clickable" aria-hidden="true"  
+                   (click)="DeleteCandidato(candidato)"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

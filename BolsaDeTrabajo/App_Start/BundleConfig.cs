@@ -21,11 +21,16 @@ namespace BolsaDeTrabajo
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-select.js",
+                      "~/Scripts/i18n/defaults-es_CL.min.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-cerulean.css",
+                      "~/Content/Site.css",
+                      "~/Content/bootstrap-select.css"
+                      ));
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿<div class="form-inline" [formGroup]="language">
+    
+          <div class="form-group">
+            <p-autoComplete formControlName="idioma"
+                            [suggestions]="filteredIdiomas"
+                            (completeMethod)="filterIdiomas($event)"
+                            field="idioma"
+                            [size]="24"
+                            placeholder="Idioma"
+                            [minLength]="1"
+                            inputStyleClass="form-control"
+                            (onSelect)="SetIdiomaId($event)">
+
+            </p-autoComplete>
+              <input type="text"  formControlName="idiomaId" hidden="hidden" />
+
+                  <div *ngIf="language.controls.idioma.touched && language.controls.idiomaId.invalid" >
+                      <small class="validation-error-message">
+                          *Campo requerido seleccione un idioma de la lista
+                      </small>                      
+                  </div>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="select" width="30" formControlName="nivelId"
+                    [class.selectPlaceholder]="!language.controls.nivelId.touched">
+                <option selected hidden>Nivel</option>
+                <option *ngFor="let nivel of niveles" [value]="nivel.id">{{nivel.nivel}}</option>
+            </select>
+                <div *ngIf="language.controls.nivelId.touched && language.controls.nivelId.invalid">
+                    <small class="validation-error-message">
+                        *Campo requerido seleccione un nivel de la lista
+                    </small> 
+                </div>
+           
+        </div>
+</div>
