@@ -1,0 +1,78 @@
+﻿<div class="form-inline" [formGroup]="aboutMe">
+    <div class="form-group">
+        <textarea formControlName="acercaDeMi" cols="100" rows="4" placeholder="Cuentanos de tí ..."></textarea>
+    </div>
+    <div class="clear"></div>
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="puestoDeseado" placeholder="Puesto de Trabajo Deseado" />
+    </div>
+    <div class="form-group">
+        <p-autoComplete formControlName="areaExperiencia"
+                        [suggestions]="filteredAreaExperiencia"
+                        (completeMethod)="filterAreaExperiencia($event)"
+                        field="areaExperiencia"
+                        [size]="24"
+                        placeholder="Área de Experiencia"
+                        [minLength]="1"
+                        inputStyleClass="form-control"
+                        (onSelect)="SetAreaExperienciaId($event)">
+
+        </p-autoComplete>
+        <input type="text" formControlName="areaExperienciaId" hidden="hidden" />
+        <div *ngIf="aboutMe.controls.areaExperiencia.touched && aboutMe.controls.areaExperienciaId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione una <br /> área de experiencia.
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="perfilExperienciaId"
+                [class.selectPlaceholder]="!aboutMe.controls.perfilExperienciaId.touched">
+            <option selected hidden>Grado de Experiencia</option>
+            <option *ngFor="let grado of gradosExperiencia" [value]="grado.id">{{grado.perfilExperiencia}}</option>
+        </select>
+        <div *ngIf="aboutMe.controls.perfilExperienciaId.touched && aboutMe.controls.perfilExperienciaId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione<br /> un grado de la lista
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="areaInteresId"
+                [class.selectPlaceholder]="!aboutMe.controls.areaInteresId.touched">
+            <option selected hidden>Área de interes</option>
+            <option *ngFor="let area of areasInteres" [value]="area.id">{{area.areaInteres}}</option>
+        </select>
+    </div>
+    <div class="clear"></div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" formControlName="salarioAceptable" placeholder="Salario mínimo aceptado"
+                   class="form-control" aria-label="Amount (to the nearest dollar)"
+                   OnlyNumber="true">
+            <span class="input-group-addon">.00</span>
+        </div>
+        <div *ngIf="aboutMe.controls.salarioAceptable.touched && aboutMe.controls.salarioAceptable.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" formControlName="salarioDeseado" placeholder="Salario deseado"
+                   class="form-control" aria-label="Amount (to the nearest dollar)"
+                   OnlyNumber="true">
+            <span class="input-group-addon">.00</span>
+        </div>
+        <div *ngIf="aboutMe.controls.salarioDeseado.touched && aboutMe.controls.salarioDeseado.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    </div>
+
+

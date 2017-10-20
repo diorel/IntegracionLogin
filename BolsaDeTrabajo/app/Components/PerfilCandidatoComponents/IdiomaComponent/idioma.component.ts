@@ -8,7 +8,7 @@ import { PerfilCandidatoService } from '../../../Services/PerfilCandidato.Servic
     selector: 'idiomas',
     templateUrl:'app/Components/PerfilCandidatoComponents/IdiomaComponent/Idioma.component.html'
 })
-export class IdiomaComponent {
+export class IdiomaComponent{
     @Input('group')
     public language: FormGroup;
 
@@ -27,6 +27,7 @@ export class IdiomaComponent {
                 this.niveles = niveles;
             })
     }
+     
     filterIdiomas(event: any)
     {
         let query = event.query; 
@@ -41,7 +42,6 @@ export class IdiomaComponent {
     SetIdiomaId(event: any) {
         this.language.get('idiomaId').setValue(event.id);
         this.language.get('idioma').setValue(null);
-        //this.idIdioma = event.id;
-        console.log(this.language.get('idiomaId').value);
+       
     }
 }

@@ -34,8 +34,6 @@ var IdiomaComponent = (function () {
     IdiomaComponent.prototype.SetIdiomaId = function (event) {
         this.language.get('idiomaId').setValue(event.id);
         this.language.get('idioma').setValue(null);
-        //this.idIdioma = event.id;
-        console.log(this.language.get('idiomaId').value);
     };
     return IdiomaComponent;
 }());

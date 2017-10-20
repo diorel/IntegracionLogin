@@ -9,28 +9,35 @@ namespace BolsaDeTrabajo.Models
     public class ExperienciaProfesional
     {
         public int Id { get; set; }
-        [Display(Name = "Empresa")]
-        public string NombreEmpresa { get; set; }
+        public string Empresa { get; set; }
 
-        [Display(Name ="Giro")]
+      
         public int GiroEmpresaId { get; set; }
         public GiroEmpresa GiroEmpresa { get; set; }
 
-        [Display(Name ="Cargo Asignado")]
+      
         public string CargoAsignado { get; set; }
 
-        [Display(Name ="Área / Departamento")]
+      
         public int AreaId { get; set; }
         public Area Area { get; set; }
 
-        public string PeriodoInicio { get; set; }
-        public string PeriodoFin { get; set; }
-        [Display(Name ="ültimo Sueldo")]
-        public decimal Sueldo { get; set; }
+        public int YearInicioId { get; set; }
+        public Year YearInicio { get; set; }
+        public int MonthInicioId { get; set; }
+        public Month MonthInicio { get; set; }
 
-        [Display(Name ="Funciones y logros del cargo")]
+        public int YearTerminoId { get; set; }
+        public Year YearTermino { get; set; }
+        public int MonthTerminoId { get; set; }
+        public Month MonthTermino { get; set; }
+
+        public decimal Salario { get; set; }
+
+        public bool TrabajoActual { get; set; }
         public string Descripcion { get; set; }
 
-        public int CandidatoId { get; set; }
+        public int PerfilCandidatoId { get; set; }
+        public PerfilCandidato PerfilCandidato { get; set; }
     }
 }

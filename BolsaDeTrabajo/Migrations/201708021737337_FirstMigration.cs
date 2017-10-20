@@ -182,7 +182,7 @@ namespace BolsaDeTrabajo.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "Sist.ExperienciasProfesionales",
+                "Sist.FormacionesProfesionales",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -447,8 +447,8 @@ namespace BolsaDeTrabajo.Migrations
             DropForeignKey("Sist.PerfilIdiomas", "IdiomaId", "Sist.Idiomas");
             DropForeignKey("Sist.Formaciones", "GradoEstudiosId", "Sist.GradosEstudios");
             DropForeignKey("Sist.Formaciones", "EstadoEstudioId", "Sist.EstadosEstudios");
-            DropForeignKey("Sist.ExperienciasProfesionales", "GiroEmpresaId", "Sist.GirosEmpresas");
-            DropForeignKey("Sist.ExperienciasProfesionales", "AreaId", "Sist.Areas");
+            DropForeignKey("Sist.FormacionesProfesionales", "GiroEmpresaId", "Sist.GirosEmpresas");
+            DropForeignKey("Sist.FormacionesProfesionales", "AreaId", "Sist.Areas");
             DropForeignKey("Sist.Direcciones", "PaisId", "Sist.Paises");
             DropForeignKey("Sist.Direcciones", "MunicipioId", "Sist.Municipios");
             DropForeignKey("Sist.Direcciones", "EstadoId", "Sist.Estados");
@@ -473,8 +473,8 @@ namespace BolsaDeTrabajo.Migrations
             DropIndex("Sist.PerfilIdiomas", new[] { "IdiomaId" });
             DropIndex("Sist.Formaciones", new[] { "EstadoEstudioId" });
             DropIndex("Sist.Formaciones", new[] { "GradoEstudiosId" });
-            DropIndex("Sist.ExperienciasProfesionales", new[] { "AreaId" });
-            DropIndex("Sist.ExperienciasProfesionales", new[] { "GiroEmpresaId" });
+            DropIndex("Sist.FormacionesProfesionales", new[] { "AreaId" });
+            DropIndex("Sist.FormacionesProfesionales", new[] { "GiroEmpresaId" });
             DropIndex("sist.DireccionTipo", "IX_Unique_TipoDireccion");
             DropIndex("Sist.Direcciones", new[] { "DireccionTipo_Id" });
             DropIndex("Sist.Direcciones", new[] { "MunicipioId" });
@@ -500,7 +500,7 @@ namespace BolsaDeTrabajo.Migrations
             DropTable("Sist.GradosEstudios");
             DropTable("Sist.Formaciones");
             DropTable("Sist.GirosEmpresas");
-            DropTable("Sist.ExperienciasProfesionales");
+            DropTable("Sist.FormacionesProfesionales");
             DropTable("Sist.EstadosEstudios");
             DropTable("Sist.Emails");
             DropTable("sist.DireccionTipo");

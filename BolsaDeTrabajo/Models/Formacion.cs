@@ -15,7 +15,6 @@ namespace BolsaDeTrabajo.Models
         }
 
         public int Id { get; set; }
-        //public int CandidatoId { get; set; }
         public int InstitucionEducativaId { get; set; }
         public virtual InstitucionEducativa InstitucionEducativa { get; set; }
         public int GradoEstudiosId { get; set; }

@@ -1,8 +1,10 @@
-﻿
-<form [formGroup]="formDatosGenerales" (ngSubmit)="Save()" class="form-inline">
+﻿<form [formGroup]="formDatosGenerales" (ngSubmit)="Save()" class="form-inline">
     <h1>{{title}}</h1>
-    <image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc]="imgProfile" (imgLoaded)="OnLoadedProfileImage($event)" ></image-uploader>
-    
+    <div class="form-group">
+        <image-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc]="imgProfile" (imgLoaded)="OnLoadedProfileImage($event)">
+
+        </image-uploader>
+    </div>
     <!-- INFORMACION GENERAL -->
     <fieldset>
         <legend>INFORMACIÓN GENERAL</legend>

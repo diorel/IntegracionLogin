@@ -1,6 +1,316 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<div class="social-bar hidden-sm-down">
+    <div class="container-fluid">
+        <div class="btn-top float-right border-left"><img src="../assets/images/search.png" class="search" /></div>
+        <div class="btn-top float-right border-left">EN</div>
+        <div class="btn-top float-right border-left">
+            <img src="../assets/images/notifications.png" />
+            <div class="circles-notify">
+                <div class="circle-green"></div>
+                <div class="circle-white"></div>
+                <div class="circle-white"></div>
+            </div>
+        </div>
+        <div class="btn-top float-right border-left"><img src="../assets/images/profile.png" /></div>
+        <div class="btn-top float-right"><img src="../assets/images/linkedin.png" /></div>
+        <div class="btn-top float-right"><img src="../assets/images/twitter.png" /></div>
+        <div class="btn-top float-right border-left"><img src="../assets/images/facebook.png" /></div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="menu">
+                <button id="nav-icon" type="button" class="navbar-toggle">
+                    <div class="nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+            <div class="logo"><img src="../assets/images/logo.png" /></div>
+
+            <div class="hidden-sm-down">
+                <div class="picture-profile"><img src="../assets/images/photo-default.png" /></div>
+                <div class="name-profile text-uppercase color-white">Carmen Martín</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="container-fluid">
+    <div class="menu-lateral">
+        <div class="social-bar-mobile text-center hidden-md-up">
+            <div class="btn-top"><img src="../assets/images/facebook.png" /></div>
+            <div class="btn-top"><img src="../assets/images/twitter.png" /></div>
+            <div class="btn-top"><img src="../assets/images/linkedin.png" /></div>
+
+            <div class="btn-top border-left"><img src="../assets/images/profile.png" /></div>
+
+            <div class="btn-top border-left btn-notify">
+                <img src="../assets/images/notifications.png" />
+                <div class="circles-notify">
+                    <div class="circle-green"></div>
+                    <div class="circle-white"></div>
+                    <div class="circle-white"></div>
+                </div>
+            </div>
+
+            <div class="btn-top border-left">EN</div>
+
+            <div class="btn-top border-left"><img src="../assets/images/search.png" class="search" /></div>
+        </div>
+
+        <div class="info-user hidden-md-up">
+            <div class="picture-profile"><img src="../assets/images/photo-default.png" /></div>
+            <div class="name-profile text-uppercase color-white">Carmen Martín</div>
+        </div>
+
+        <div class="btn-principal active text-center">
+            <img src="../assets/images/icon-profile.png" />
+            <span>Mi perfil</span>
+        </div>
+        <div class="btn-lateral active"> Información General</div>
+        <div class="btn-lateral"> Datos personales</div>
+        <div class="btn-lateral"> Dirección</div>
+        <div class="btn-lateral"> Identificación Oficial</div>
+        <div class="btn-lateral"> Redes Sociales</div>
 
 
+        <div class="btn-principal text-center">
+            <img src="../assets/images/icon-cv.png" />
+            Mi C.V.
+        </div>
+        <div class="btn-principal text-center">
+            <img src="../assets/images/icon-alerts.png" />
+            Mis Alertas
+        </div>
+        <div class="btn-principal text-center">
+            <img src="../assets/images/icon-search.png" />
+            Buscar
+        </div>
+        <div class="btn-principal text-center">
+            <img src="../assets/images/icon-applications.png" />
+            Postulaciones
+        </div>
+
+    </div>
+
+    <div class="row contenido">
+        <div class="col-lg-9 col-12 padding-991">
+            <div class="general-information-container">
+                <div class="row general-information">
+                    <div class="col-12">
+                        <div class="title color-blue text-uppercase">Información General</div>
+                        <div class="btn-edit"><img src="../assets/images/icon-edit.png" /></div>
+
+                        <div class="general-information-photo" style="background: url('../assets/images/photo-profile-default.png'); background-size: cover"></div>
+                    </div>
+
+
+                    <div class="col-12 color-grey">
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Nombre:</div>
+                            <div class="col-md-7 col-sm-6">Carmen</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Segundo Nombre:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Apellido Paterno:</div>
+                            <div class="col-md-7 col-sm-6">Martín</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Apellido Materno:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Correo electrónico:</div>
+                            <div class="col-md-7 col-sm-6">c.martin@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="personal-information-container">
+                <div class="row personal-information">
+                    <div class="col-12 color-grey">
+                        <div class="title color-blue text-uppercase">Datos personales</div>
+                        <div class="btn-edit"><img src="../assets/images/icon-edit.png" /></div>
+
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">País de nacimiento:</div>
+                            <div class="col-md-7 col-sm-6">México</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Estado de nacimiento:</div>
+                            <div class="col-md-7 col-sm-6">Jalisco</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Municipio / Delegación:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Estado Civil:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Edad:</div>
+                            <div class="col-md-7 col-sm-6">26 años</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Genero:</div>
+                            <div class="col-md-7 col-sm-6">Mujer</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Teléfono Celular:</div>
+                            <div class="col-md-7 col-sm-6">333398765</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Teléfono Fijo:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Teléfono recados:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Reubicación:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="address-information-container">
+                <div class="row address-information">
+                    <div class="col-12 color-grey">
+                        <div class="title color-blue text-uppercase">Dirección</div>
+                        <div class="btn-edit"><img src="../assets/images/icon-edit.png" /></div>
+
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">País:</div>
+                            <div class="col-md-7 col-sm-6">México</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Estado:</div>
+                            <div class="col-md-7 col-sm-6">Jalisco</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Municipio / Delegación:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Código Postal:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Colonia:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Calle:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="identification-information-container">
+                <div class="row identification-information">
+                    <div class="col-12 color-grey">
+                        <div class="title color-blue text-uppercase">Identificación oficial</div>
+                        <div class="btn-edit"><img src="../assets/images/icon-edit.png" /></div>
+
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">No. Imss:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Curp:</div>
+                            <div class="col-md-7 col-sm-6">MAGC900530MJCRTR05</div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">RFC:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Licencia de conducir:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Tipo:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Vehículo propio:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-information-container">
+                <div class="row social-information">
+                    <div class="col-12 color-grey">
+                        <div class="title color-blue text-uppercase">Redes sociales</div>
+                        <div class="btn-edit"><img src="../assets/images/icon-edit.png" /></div>
+
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Linkedin:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Facebook:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Twitter:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Skype:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Google+:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                        <div class="row label-data">
+                            <div class="col-md-5 col-sm-6 font-bold">Otra:</div>
+                            <div class="col-md-7 col-sm-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12 padding-991">
+            <div class="profile-percent">
+                <div class="color-blue font-bold text-center">Mi perfil profesional está al</div>
+                <img src="../assets/images/graphic-test.png" />
+
+                <ul>
+                    <li class="link-blue">Agregar fotografía</li>
+                    <li class="link-blue">Completar Datos Personales</li>
+                    <li class="link-blue">Completar Datos Identificación Oficial</li>
+                    <li class="link-blue">Agregar Redes Sociales</li>
+                    <li class="link-blue">Completar Acerca de Mí</li>
+                    <li class="link-blue">Agregar Experiencia Profesional</li>
+                    <li class="link-blue">Agregar Formación</li>
+                    <li class="link-blue">Agregar Conocimientos y Habilidades</li>
+                    <li class="link-blue">Agregar Idiomas</li>
+                    <li class="link-blue">Agregar tu Sitio Web</li>
+                    <li class="link-blue">Activar alertas</li>
+                </ul>
+
+                <div class="text-uppercase font-bold color-yellow legend">
+                    Para brindarte un mejor servicio y encontrar la vacate ideal para ti, ayúdanos a llenar los siguientes datos
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>*@
     <my-app>Loading…</my-app>

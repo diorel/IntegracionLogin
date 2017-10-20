@@ -3,15 +3,46 @@
         <h1>{{title}}</h1>
         <input type="text" value="" formControlName="id" hidden="hidden" />
         <input type="text" value="" formControlName="candidatoId" hidden="hidden" />
-		<!--formaciones-->
-		<div formArrayName="formaciones">
-			<div *ngFor="let formacion of PerfilCandidato.controls.formaciones.controls; let i=index" class="panel panel-default">
+        <!--Aboutme-->
+        <div formArrayName="aboutme">
+            <div *ngFor="let about of PerfilCandidato.controls.aboutme.controls; let i=index" class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Acerca de mí</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-inline" [formGroupName]="i">
+                        <aboutme [group]="PerfilCandidato.controls.aboutme.controls[i]"></aboutme>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Experiencias Profesional-->
+        <div formArrayName="experiencias">
+            <div *ngFor="let experiencia of PerfilCandidato.controls.experiencias.controls; let i=index" class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.experiencias.controls.length > 1" (click)="removeExperiencia(i)"></a>
+                    <h4>Experiencia {{i + 1}}</h4>
+                </div>
+                <div class="panel-body" [formGroupName]="i">
+                    <experiencias [group]="PerfilCandidato.controls.experiencias.controls[i]"></experiencias>
+                </div>
+            </div>
+        </div>
+        <div class="margin-20">
+            <a (click)="addExperiencia()" style="cursor: default">
+                Agregar Experiencia Profesional +
+            </a>
+        </div>
+        <div class="clear"></div>
+		<!--Formaciones-->
+		<div formArrayName="Formaciones">
+			<div *ngFor="let formacion of PerfilCandidato.controls.Formaciones.controls; let i=index" class="panel panel-default">
 				<div class="panel-heading">
-                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.formaciones.controls.length > 1" (click)="removeFormacion(i)"></a>
+                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.Formaciones.controls.length > 1" (click)="removeFormacion(i)"></a>
 					<h4>Formación {{i + 1}}</h4>
 				</div>
 				<div class="panel-body" [formGroupName]="i">
-					<formaciones [group]="PerfilCandidato.controls.formaciones.controls[i]"></formaciones>
+					<Formaciones [group]="PerfilCandidato.controls.Formaciones.controls[i]"></Formaciones>
 				</div>
 			</div>
 		</div>
@@ -38,7 +69,40 @@
 					Agregar Idioma +
 				</a>
 			</div>
-
+        <!--cursos-->
+        <div formArrayName="cursos">
+            <div *ngFor="let formacion of PerfilCandidato.controls.cursos.controls; let i=index" class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.cursos.controls.length > 1" (click)="removeCurso(i)"></a>
+                    <h4>Curso {{i + 1}}</h4>
+                </div>
+                <div class="panel-body" [formGroupName]="i">
+                    <cursos [group]="PerfilCandidato.controls.cursos.controls[i]"></cursos>
+                </div>
+            </div>
+        </div>
+        <div class="margin-20">
+            <a (click)="addCurso()" style="cursor: default">
+                Agregar Curso +
+            </a>
+        </div>
+        <!--Conocimientos-->
+        <div formArrayName="conocimientos">
+            <div *ngFor="let formacion of PerfilCandidato.controls.conocimientos.controls; let i=index" class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#" class="glyphicon glyphicon-remove pull-right clickable" *ngIf="PerfilCandidato.controls.conocimientos.controls.length > 1" (click)="removeConocimiento(i)"></a>
+                    <h4>Conocimiento o Habilidad {{i + 1}}</h4>
+                </div>
+                <div class="panel-body" [formGroupName]="i">
+                    <conocimientos [group]="PerfilCandidato.controls.conocimientos.controls[i]"></conocimientos>
+                </div>
+            </div>
+        </div>
+        <div class="margin-20">
+            <a (click)="addConocimiento()" style="cursor: default">
+                Agregar Conocimiento o Habilidad +
+            </a>
+        </div>
 			<div class="margin-20">
 				<button type="submit" class="btn btn-primary pull-right" [disabled]="!PerfilCandidato.valid">Submit</button>
 			</div>

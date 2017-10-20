@@ -5,12 +5,13 @@ import { CalendarModule, AutoCompleteModule, CheckboxModule } from 'primeng/prim
 import { PerfilCandidatoService } from '../../../Services/PerfilCandidato.Service';
 
 @Component({
-    selector: 'formaciones',
+    selector: 'Formaciones',
     templateUrl:'app/Components/PerfilCandidatoComponents/FormacionComponent/Formacion.component.html'
 })
 export class FormacionComponent {
     @Input('group')
     public Formaciones: FormGroup;
+
     filteredInstituciones: any[];
     filteredCarreras: any[];
     Estatus: any[];
@@ -52,7 +53,6 @@ export class FormacionComponent {
         this._perfilCandidatoService.GetInstituciones(query)
             .then(instituciones => {
                 this.filteredInstituciones = instituciones;
-                console.log(this.filteredInstituciones);
             });
     }
     filterCarreras(event: any) {
@@ -60,7 +60,6 @@ export class FormacionComponent {
         this._perfilCandidatoService.GetCarreras(query)
             .then(carreras => {
                 this.filteredCarreras = carreras;
-                console.log(this.filteredInstituciones);
             });
     }
     SetCarreraId(event:any)

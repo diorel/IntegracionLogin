@@ -28,6 +28,11 @@ var PerfilCandidatoService = (function () {
         this.UrlDocumentosValidadores = 'api/documentosValidadores';
         this.UrlPerfilCandidato = 'api/PerfilCandidato';
         this.UrlUploadImage = 'api/ProfileImageUploader';
+        this.UrlAreaExperiencia = 'api/AreaExperiencia';
+        this.UrlAreaInteres = 'api/AreaInteres';
+        this.UrlAreas = 'api/areas';
+        this.UrlGirosEmpresas = 'api/GirosEmpresa';
+        this.UrlPerfilExperiencia = 'api/PerfilExperiencia';
     }
     PerfilCandidatoService.prototype.GetIdiomas = function (query) {
         return this._http.get(this.UrlIdiomas + "/?query=" + query)
@@ -74,6 +79,33 @@ var PerfilCandidatoService = (function () {
     };
     PerfilCandidatoService.prototype.GetDocumentosValidadores = function () {
         return this._http.get(this.UrlDocumentosValidadores)
+            .map(function (resp) { return resp.json(); })
+            .catch(this.handleError);
+    };
+    PerfilCandidatoService.prototype.GetAreasExperiencia = function (query) {
+        return this._http.get(this.UrlAreaExperiencia + "/?query=" + query)
+            .map(function (resp) { return resp.json(); })
+            .toPromise()
+            .catch(this.handleError);
+    };
+    PerfilCandidatoService.prototype.GetGradosExperiencia = function () {
+        return this._http.get(this.UrlPerfilExperiencia)
+            .map(function (resp) { return resp.json(); })
+            .catch(this.handleError);
+    };
+    PerfilCandidatoService.prototype.GetAreasInteres = function () {
+        return this._http.get(this.UrlAreaInteres)
+            .map(function (resp) { return resp.json(); })
+            .catch(this.handleError);
+    };
+    PerfilCandidatoService.prototype.GetAreas = function (query) {
+        return this._http.get(this.UrlAreas + "/?query=" + query)
+            .map(function (resp) { return resp.json(); })
+            .toPromise()
+            .catch(this.handleError);
+    };
+    PerfilCandidatoService.prototype.GetGirosEmpresas = function () {
+        return this._http.get(this.UrlGirosEmpresas)
             .map(function (resp) { return resp.json(); })
             .catch(this.handleError);
     };

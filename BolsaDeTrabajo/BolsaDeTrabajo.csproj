@@ -213,6 +213,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\AreaExperienciaController.cs" />
+    <Compile Include="Controllers\Api\AreaInteresController.cs" />
+    <Compile Include="Controllers\Api\AreasController.cs" />
     <Compile Include="Controllers\Api\BaseAPIController.cs" />
     <Compile Include="Controllers\Api\CandidatosController.cs" />
     <Compile Include="Controllers\Api\CarrerasController.cs" />
@@ -222,6 +225,7 @@
     <Compile Include="Controllers\Api\DocumentosValidadoresController.cs" />
     <Compile Include="Controllers\Api\EstadosController.cs" />
     <Compile Include="Controllers\Api\EstadosEstudioController.cs" />
+    <Compile Include="Controllers\Api\GirosEmpresaController.cs" />
     <Compile Include="Controllers\Api\GradosEstudioController.cs" />
     <Compile Include="Controllers\Api\IdiomasController.cs" />
     <Compile Include="Controllers\Api\InstitucionEducativaController.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="Controllers\Api\PaisesController.cs" />
     <Compile Include="Controllers\Api\PalabrasInconvenientesController.cs" />
     <Compile Include="Controllers\Api\PerfilCandidatoController.cs" />
+    <Compile Include="Controllers\Api\PerfilExperienciaController.cs" />
     <Compile Include="Controllers\Api\ProfileImageUploaderController.cs" />
     <Compile Include="Controllers\Api\SexosController.cs" />
     <Compile Include="Controllers\Api\TiposLicenciasController.cs" />
@@ -653,15 +658,84 @@
     <Compile Include="Migrations\201710041419467_ProfileImageURlDefautlValue.Designer.cs">
       <DependentUpon>201710041419467_ProfileImageURlDefautlValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041824242_aboutMe.cs" />
+    <Compile Include="Migrations\201710041824242_aboutMe.Designer.cs">
+      <DependentUpon>201710041824242_aboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710042122099_CatalogosAboutMe.cs" />
+    <Compile Include="Migrations\201710042122099_CatalogosAboutMe.Designer.cs">
+      <DependentUpon>201710042122099_CatalogosAboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710052047494_ChangeAboutMeToArray.cs" />
+    <Compile Include="Migrations\201710052047494_ChangeAboutMeToArray.Designer.cs">
+      <DependentUpon>201710052047494_ChangeAboutMeToArray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061713497_Cursos.cs" />
+    <Compile Include="Migrations\201710061713497_Cursos.Designer.cs">
+      <DependentUpon>201710061713497_Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061754299_cursorenameproperties.cs" />
+    <Compile Include="Migrations\201710061754299_cursorenameproperties.Designer.cs">
+      <DependentUpon>201710061754299_cursorenameproperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061818081_renamedcursosagain.cs" />
+    <Compile Include="Migrations\201710061818081_renamedcursosagain.Designer.cs">
+      <DependentUpon>201710061818081_renamedcursosagain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710062208553_ConocimientosHabilidades.cs" />
+    <Compile Include="Migrations\201710062208553_ConocimientosHabilidades.Designer.cs">
+      <DependentUpon>201710062208553_ConocimientosHabilidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710062240518_herramientahabilidadnonulleable.cs" />
+    <Compile Include="Migrations\201710062240518_herramientahabilidadnonulleable.Designer.cs">
+      <DependentUpon>201710062240518_herramientahabilidadnonulleable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091653055_ExperienciasProfesionalCambio.cs" />
+    <Compile Include="Migrations\201710091653055_ExperienciasProfesionalCambio.Designer.cs">
+      <DependentUpon>201710091653055_ExperienciasProfesionalCambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091724558_ExperienciasProfesionalesInstead.cs" />
+    <Compile Include="Migrations\201710091724558_ExperienciasProfesionalesInstead.Designer.cs">
+      <DependentUpon>201710091724558_ExperienciasProfesionalesInstead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091856206_AreasCatalogo.cs" />
+    <Compile Include="Migrations\201710091856206_AreasCatalogo.Designer.cs">
+      <DependentUpon>201710091856206_AreasCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091921481_girosempresascatalogonuevo.cs" />
+    <Compile Include="Migrations\201710091921481_girosempresascatalogonuevo.Designer.cs">
+      <DependentUpon>201710091921481_girosempresascatalogonuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091936452_nuevocatlaogogirosempresas.cs" />
+    <Compile Include="Migrations\201710091936452_nuevocatlaogogirosempresas.Designer.cs">
+      <DependentUpon>201710091936452_nuevocatlaogogirosempresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710092005444_renamenombreempresa.cs" />
+    <Compile Include="Migrations\201710092005444_renamenombreempresa.Designer.cs">
+      <DependentUpon>201710092005444_renamenombreempresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710092014254_renameemoresaperfilexperiencia.cs" />
+    <Compile Include="Migrations\201710092014254_renameemoresaperfilexperiencia.Designer.cs">
+      <DependentUpon>201710092014254_renameemoresaperfilexperiencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710092029109_renombrarsalarioexperienciaprofesional.cs" />
+    <Compile Include="Migrations\201710092029109_renombrarsalarioexperienciaprofesional.Designer.cs">
+      <DependentUpon>201710092029109_renombrarsalarioexperienciaprofesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AboutMe.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\AreaExperiencia.cs" />
+    <Compile Include="Models\AreaInteres.cs" />
     <Compile Include="Models\Candidato.cs" />
     <Compile Include="Models\CandidatoConocimientoInformatico.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Carrera.cs" />
     <Compile Include="Models\Colonia.cs" />
     <Compile Include="Models\ConocimientoInformatico.cs" />
+    <Compile Include="Models\ConocimientoOHabilidad.cs" />
+    <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\Direccion.cs" />
     <Compile Include="Models\DireccionTipo.cs" />
     <Compile Include="Models\DocumentoValidador.cs" />
@@ -698,6 +772,7 @@
     <Compile Include="Models\PalabraEscluida.cs" />
     <Compile Include="Models\PalabraInconveniente.cs" />
     <Compile Include="Models\PerfilCandidato.cs" />
+    <Compile Include="Models\PerfilExperiencia.cs" />
     <Compile Include="Models\PerfilIdioma.cs" />
     <Compile Include="Models\PerfilProfesional.cs" />
     <Compile Include="Models\Persona.cs" />
@@ -715,19 +790,53 @@
     <Compile Include="ViewModels\CandidatoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Components\PerfilCandidatoComponents\ExperienciaProfesionalComponent\ExperienciaProfesional.component.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\AboutMe\aboutme.component.css" />
     <Content Include="app\Components\Alta.Candidato.component.html" />
     <Content Include="app\Components\app.component.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\AboutMe\aboutme.component.html" />
     <Content Include="app\Components\ImageProfile\imageProfile.upload.component.css" />
     <Content Include="app\Components\ImageProfile\imageProfile.upload.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\ConocimientosHabilidadesComponent\Conocimiento.component.html" />
+    <Content Include="app\Components\PerfilCandidatoComponents\CursoComponent\curso.component.html" />
     <Content Include="app\Components\PerfilCandidatoComponents\FormacionComponent\Formacion.component.html" />
     <Content Include="app\Components\PerfilCandidatoComponents\IdiomaComponent\Idioma.component.html" />
     <Content Include="app\Components\PerfilCandidatoComponents\Perfil-Candidato.component.html" />
     <Content Include="app\Components\TablaCandidatos\CandidatosTable.html" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\images\facebook.png" />
+    <Content Include="assets\images\graphic-test.png" />
+    <Content Include="assets\images\icon-alerts.png" />
+    <Content Include="assets\images\icon-applications.png" />
+    <Content Include="assets\images\icon-calendar.png" />
+    <Content Include="assets\images\icon-cv.png" />
+    <Content Include="assets\images\icon-edit.png" />
+    <Content Include="assets\images\icon-profile.png" />
+    <Content Include="assets\images\icon-search.png" />
+    <Content Include="assets\images\icon-upload.png" />
+    <Content Include="assets\images\linkedin.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\notifications.png" />
+    <Content Include="assets\images\photo-default.png" />
+    <Content Include="assets\images\photo-profile-default.png" />
+    <Content Include="assets\images\photo-profile.png" />
+    <Content Include="assets\images\profile.png" />
+    <Content Include="assets\images\search.png" />
+    <Content Include="assets\images\twitter.png" />
     <Content Include="Content\bootstrap-cerulean.css" />
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -745,10 +854,14 @@
     <Content Include="Content\bootstrap-select.css.map" />
     <Content Include="package.json" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -768,7 +881,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -793,6 +905,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="tsconfig.json" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -804,7 +917,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708021737337_FirstMigration.resx">
@@ -1107,6 +1219,54 @@
     <EmbeddedResource Include="Migrations\201710041419467_ProfileImageURlDefautlValue.resx">
       <DependentUpon>201710041419467_ProfileImageURlDefautlValue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041824242_aboutMe.resx">
+      <DependentUpon>201710041824242_aboutMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710042122099_CatalogosAboutMe.resx">
+      <DependentUpon>201710042122099_CatalogosAboutMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710052047494_ChangeAboutMeToArray.resx">
+      <DependentUpon>201710052047494_ChangeAboutMeToArray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061713497_Cursos.resx">
+      <DependentUpon>201710061713497_Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061754299_cursorenameproperties.resx">
+      <DependentUpon>201710061754299_cursorenameproperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061818081_renamedcursosagain.resx">
+      <DependentUpon>201710061818081_renamedcursosagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710062208553_ConocimientosHabilidades.resx">
+      <DependentUpon>201710062208553_ConocimientosHabilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710062240518_herramientahabilidadnonulleable.resx">
+      <DependentUpon>201710062240518_herramientahabilidadnonulleable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091653055_ExperienciasProfesionalCambio.resx">
+      <DependentUpon>201710091653055_ExperienciasProfesionalCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091724558_ExperienciasProfesionalesInstead.resx">
+      <DependentUpon>201710091724558_ExperienciasProfesionalesInstead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091856206_AreasCatalogo.resx">
+      <DependentUpon>201710091856206_AreasCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091921481_girosempresascatalogonuevo.resx">
+      <DependentUpon>201710091921481_girosempresascatalogonuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091936452_nuevocatlaogogirosempresas.resx">
+      <DependentUpon>201710091936452_nuevocatlaogogirosempresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710092005444_renamenombreempresa.resx">
+      <DependentUpon>201710092005444_renamenombreempresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710092014254_renameemoresaperfilexperiencia.resx">
+      <DependentUpon>201710092014254_renameemoresaperfilexperiencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710092029109_renombrarsalarioexperienciaprofesional.resx">
+      <DependentUpon>201710092029109_renombrarsalarioexperienciaprofesional.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
@@ -1114,8 +1274,12 @@
     <TypeScriptCompile Include="app\app.routing.ts" />
     <TypeScriptCompile Include="app\Components\alta.candidato.component.ts" />
     <TypeScriptCompile Include="app\Components\alta.candidato.validators.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\ExperienciaProfesionalComponent\ExperienciaProfesional.componet.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\AboutMe\aboutme.component.ts" />
     <TypeScriptCompile Include="app\Components\ImageProfile\imageProfile-Upload.component.ts" />
     <TypeScriptCompile Include="app\Components\OnlyNumbers.Directive.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\ConocimientosHabilidadesComponent\Conocimiento.component.ts" />
+    <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\CursoComponent\curso.component.ts" />
     <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\FormacionComponent\Formacion.Component.ts" />
     <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\IdiomaComponent\idioma.component.ts" />
     <TypeScriptCompile Include="app\Components\PerfilCandidatoComponents\perfil-candidato.component.ts" />

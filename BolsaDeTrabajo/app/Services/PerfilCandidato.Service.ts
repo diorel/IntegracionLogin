@@ -18,6 +18,11 @@ export class PerfilCandidatoService {
     private UrlDocumentosValidadores: string = 'api/documentosValidadores'
     private UrlPerfilCandidato: string = 'api/PerfilCandidato'
     private UrlUploadImage: string = 'api/ProfileImageUploader'
+    private UrlAreaExperiencia: string = 'api/AreaExperiencia'
+    private UrlAreaInteres: string = 'api/AreaInteres'
+    private UrlAreas: string = 'api/areas'
+    private UrlGirosEmpresas: string = 'api/GirosEmpresa'
+    private UrlPerfilExperiencia: string = 'api/PerfilExperiencia'
     constructor(private _http: Http){}
     GetIdiomas(query: string) {
         return this._http.get(this.UrlIdiomas + "/?query=" + query)
@@ -70,7 +75,33 @@ export class PerfilCandidatoService {
             .map(resp => resp.json())
             .catch(this.handleError);
     }
-
+    GetAreasExperiencia(query: string) {
+        return this._http.get(this.UrlAreaExperiencia + "/?query=" + query)
+            .map(resp => resp.json())
+            .toPromise()
+            .catch(this.handleError);
+    }
+    GetGradosExperiencia() {
+        return this._http.get(this.UrlPerfilExperiencia)
+            .map(resp => resp.json())
+            .catch(this.handleError);
+    }
+    GetAreasInteres() {
+        return this._http.get(this.UrlAreaInteres)
+            .map(resp => resp.json())
+            .catch(this.handleError);
+    }
+    GetAreas(query: string) {
+        return this._http.get(this.UrlAreas + "/?query=" + query)
+            .map(resp => resp.json())
+            .toPromise()
+            .catch(this.handleError);
+    }
+    GetGirosEmpresas() {
+        return this._http.get(this.UrlGirosEmpresas)
+            .map(resp => resp.json())
+            .catch(this.handleError);
+    }
     GetPerfilCandidato(id: number): Observable<PerfilCandidato>
     {
         return this._http.get(this.UrlPerfilCandidato + "/?id=" + id)

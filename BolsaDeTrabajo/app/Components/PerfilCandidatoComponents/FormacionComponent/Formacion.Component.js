@@ -44,7 +44,6 @@ var FormacionComponent = (function () {
         this._perfilCandidatoService.GetInstituciones(query)
             .then(function (instituciones) {
             _this.filteredInstituciones = instituciones;
-            console.log(_this.filteredInstituciones);
         });
     };
     FormacionComponent.prototype.filterCarreras = function (event) {
@@ -53,7 +52,6 @@ var FormacionComponent = (function () {
         this._perfilCandidatoService.GetCarreras(query)
             .then(function (carreras) {
             _this.filteredCarreras = carreras;
-            console.log(_this.filteredInstituciones);
         });
     };
     FormacionComponent.prototype.SetCarreraId = function (event) {
@@ -72,7 +70,7 @@ __decorate([
 ], FormacionComponent.prototype, "Formaciones", void 0);
 FormacionComponent = __decorate([
     core_1.Component({
-        selector: 'formaciones',
+        selector: 'Formaciones',
         templateUrl: 'app/Components/PerfilCandidatoComponents/FormacionComponent/Formacion.component.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder,

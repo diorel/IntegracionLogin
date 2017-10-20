@@ -15,6 +15,10 @@ import { AltaCandidato } from './Components/alta.candidato.component';
 import { CandidatoPerfil } from './Components/PerfilCandidatoComponents/perfil-candidato.component';
 import { IdiomaComponent } from './Components/PerfilCandidatoComponents/IdiomaComponent/idioma.component';
 import { FormacionComponent } from './Components/PerfilCandidatoComponents/FormacionComponent/Formacion.Component';
+import { ExperienciaProfesionalComponent} from './Components/PerfilCandidatoComponents/ExperienciaProfesionalComponent/ExperienciaProfesional.componet';
+import { CursoComponent } from './Components/PerfilCandidatoComponents/CursoComponent/curso.component';
+import { ConocimientoComponent } from './Components/PerfilCandidatoComponents/ConocimientosHabilidadesComponent/Conocimiento.component';
+import { AboutMeComponent } from './Components/PerfilCandidatoComponents/AboutMe/aboutme.component';
 import { NotFoundComponent } from './Components/not-found.component';
 import { CandidatosTableComponent } from './Components/TablaCandidatos/CandidatosTable.component';
 import { CatalogosService } from './Services/catalogos.service';
@@ -30,7 +34,7 @@ import { ImageUploaderComponent } from './Components/ImageProfile/imageProfile-U
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpModule, routing, CalendarModule, AutoCompleteModule, BrowserAnimationsModule, CheckboxModule],
-    declarations: [AppComponent, AltaCandidato, CandidatosTableComponent, CandidatoPerfil, IdiomaComponent, FormacionComponent,  ImageUploaderComponent, OnlyNumber, OnlyLetters, NotFoundComponent ],
+    declarations: [AppComponent, AltaCandidato, CandidatosTableComponent, CandidatoPerfil, IdiomaComponent, FormacionComponent, CursoComponent, ConocimientoComponent, ExperienciaProfesionalComponent, ImageUploaderComponent, AboutMeComponent, OnlyNumber, OnlyLetters, NotFoundComponent ],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' }, CatalogosService, CandidatosService, PerfilCandidatoService, CURPValidator, ValidacionIdentificaciones, PerfilImageService],
     bootstrap: [AppComponent]
 

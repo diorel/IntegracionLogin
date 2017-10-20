@@ -40,7 +40,7 @@ namespace BolsaDeTrabajo.Models
             public DbSet<GiroEmpresa>  GirosEmpresa { get; set; }
         public DbSet<Month> Months { get; set; }
         public DbSet<Year> Years { get; set; }
-            public DbSet<ExperienciaProfesional> Experienciasprofesionales { get; set; }
+            public DbSet<ExperienciaProfesional> ExperienciasProfesionales { get; set; }
         public DbSet<EstadoEstudio> EstadoEstudios { get; set; }
         public DbSet<Formacion> Formaciones { get; set; }
         public DbSet<GradoEstudio> GradosEstudio { get; set; }
@@ -61,11 +61,18 @@ namespace BolsaDeTrabajo.Models
             public DbSet <DocumentoValidador> DocumentosValidadores { get; set; }
             public DbSet <Carrera> Carreras { get; set; }
             public DbSet <PerfilCandidato> PerfilCandidato { get; set; }
+            public DbSet <AboutMe> AcercaDeMi { get; set; }
+            public DbSet <AreaExperiencia> AreasExperiencia { get; set; }
+            public DbSet <AreaInteres> AreasInteres { get; set; }
+            public DbSet <PerfilExperiencia> PerfilExperiencia { get; set; }
+            public DbSet <Curso> Cursos { get; set; }
+            public DbSet <ConocimientoOHabilidad> Conocimientos { get; set; }
 
         #endregion
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Configure default schema
+            #region "ModelBuilder"
             modelBuilder.HasDefaultSchema("Sist");
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
@@ -99,7 +106,13 @@ namespace BolsaDeTrabajo.Models
             modelBuilder.Entity<DocumentoValidador>().ToTable("DocumentosValidadores");
             modelBuilder.Entity<Carrera>().ToTable("Carreras");
             modelBuilder.Entity<PerfilCandidato>().ToTable("PerfilCandidato");
-
+            modelBuilder.Entity<AboutMe>().ToTable("AcercaDeMi");
+            modelBuilder.Entity<AreaExperiencia>().ToTable("AreasExperiencia");
+            modelBuilder.Entity<AreaInteres>().ToTable("AreasInteres");
+            modelBuilder.Entity<PerfilExperiencia>().ToTable("PerfilExperiencia");
+            modelBuilder.Entity<Curso>().ToTable("Cursos");
+            modelBuilder.Entity<ConocimientoOHabilidad>().ToTable("ConocimientosHabilidades");
+            #endregion
             //modelBuilder.Entity<Telefono>()
             //    .HasRequired(t => t.TipoTelefono)
             //    .WithRequiredDependent()

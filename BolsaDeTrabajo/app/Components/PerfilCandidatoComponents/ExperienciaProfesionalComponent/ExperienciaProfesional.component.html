@@ -1,0 +1,116 @@
+﻿<div class="form-inline" [formGroup]="Experiencias">
+    <div class="form-group">
+        <input type="text" formControlName="empresa" class="form-control" placeholder="Empresa" />
+        <div *ngIf="Experiencias.controls.empresa.touched && Experiencias.controls.empresa.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="giroEmpresaId"
+                [class.selectPlaceholder]="!Experiencias.controls.giroEmpresaId.touched">
+            <option selected hidden>Giro Empresa</option>
+            <option *ngFor="let giro of girosEmpresa" [value]="giro.id">{{giro.giroEmpresa}}</option>
+        </select>
+        <div *ngIf="Experiencias.controls.giroEmpresaId.touched && Experiencias.controls.giroEmpresaId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione<br /> un grado de la lista
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" formControlName="cargoAsignado" class="form-control" placeholder="Cargo Asignado" />
+        <div *ngIf="Experiencias.controls.cargoAsignado.touched && Experiencias.controls.cargoAsignado.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <p-autoComplete formControlName="area"
+                        [suggestions]="filteredAreas"
+                        (completeMethod)="filterAreas($event)"
+                        field="nombre"
+                        [size]="24"
+                        placeholder="Área"
+                        [minLength]="1"
+                        inputStyleClass="form-control"
+                        (onSelect)="SetAreaId($event)">
+
+        </p-autoComplete>
+        <input type="text" formControlName="areaId" hidden="hidden" />
+        <div *ngIf="Experiencias.controls.area.touched && Experiencias.controls.areaId.invalid">
+            <small class="validation-error-message">
+                *Campo requerido seleccione una <br /> area de la lista.
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="text" formControlName="salario" placeholder="Salario"
+                   class="form-control" aria-label="Amount (to the nearest dollar)"
+                   OnlyNumber="true">
+            <span class="input-group-addon">.00</span>
+        </div>
+        <div *ngIf="Experiencias.controls.salario.touched && Experiencias.controls.salario.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="form-group">
+        <label>Periodo de Inicio</label><br />
+        <select class="form-control" id="select" width="30" formControlName="yearInicioId"
+                [class.selectPlaceholder]="!Experiencias.controls.yearInicioId.touched">
+            <option selected hidden>Año Inicio</option>
+            <option *ngFor="let year of years" [value]="year.id">{{year.year}}</option>
+        </select>
+        <select class="form-control" id="select" width="30" formControlName="monthInicioId"
+                [class.selectPlaceholder]="!Experiencias.controls.monthInicioId.touched">
+            <option selected hidden>Mes Inicio</option>
+            <option *ngFor="let mes of meses" [value]="mes.id">{{mes.month}}</option>
+        </select>
+        <div *ngIf="(Experiencias.controls.yearInicioId.touched && Experiencias.controls.yearInicioId.invalid)
+                    || (Experiencias.controls.monthInicioId.touched && Experiencias.controls.monthInicioId.invalid)">
+            <small class="validation-error-message">
+                *Período de inicio requerido
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Periodo de Termino</label><br />
+        <select class="form-control" id="select" width="30" formControlName="yearTerminoId"
+                [class.selectPlaceholder]="!Experiencias.controls.yearTerminoId.touched">
+            <option selected hidden>Año Termino</option>
+            <option *ngFor="let year of years" [value]="year.id">{{year.year}}</option>
+        </select>
+        <select class="form-control" id="select" width="30" formControlName="monthTerminoId"
+                [class.selectPlaceholder]="!Experiencias.controls.monthTerminoId.touched">
+            <option selected hidden>Mes Termino</option>
+            <option *ngFor="let mes of meses" [value]="mes.id">{{mes.month}}</option>
+        </select>
+        <div *ngIf="(Experiencias.controls.yearTerminoId.touched && Experiencias.controls.yearTerminoId.invalid)
+                    || (Experiencias.controls.monthTerminoId.touched && Experiencias.controls.monthTerminoId.invalid)">
+            <small class="validation-error-message">
+                *Período de inicio requerido
+            </small>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="form-group">
+        <textarea formControlName="descripcion" cols="100" rows="4" placeholder="Funciones y logros del cargo ..."></textarea>
+    </div>
+    <div class="clear"></div>
+    <div class="checkbox">
+        <label>Trabajo Actual</label>
+        <label>
+            <input id="TrabajoActual" type="checkbox"
+                   formControlName="trabajoActual" />
+        </label>
+    </div>
+</div>

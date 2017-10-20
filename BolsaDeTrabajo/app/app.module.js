@@ -20,6 +20,10 @@ var alta_candidato_component_1 = require("./Components/alta.candidato.component"
 var perfil_candidato_component_1 = require("./Components/PerfilCandidatoComponents/perfil-candidato.component");
 var idioma_component_1 = require("./Components/PerfilCandidatoComponents/IdiomaComponent/idioma.component");
 var Formacion_Component_1 = require("./Components/PerfilCandidatoComponents/FormacionComponent/Formacion.Component");
+var ExperienciaProfesional_componet_1 = require("./Components/PerfilCandidatoComponents/ExperienciaProfesionalComponent/ExperienciaProfesional.componet");
+var curso_component_1 = require("./Components/PerfilCandidatoComponents/CursoComponent/curso.component");
+var Conocimiento_component_1 = require("./Components/PerfilCandidatoComponents/ConocimientosHabilidadesComponent/Conocimiento.component");
+var aboutme_component_1 = require("./Components/PerfilCandidatoComponents/AboutMe/aboutme.component");
 var not_found_component_1 = require("./Components/not-found.component");
 var CandidatosTable_component_1 = require("./Components/TablaCandidatos/CandidatosTable.component");
 var catalogos_service_1 = require("./Services/catalogos.service");
@@ -39,7 +43,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_2.ReactiveFormsModule, forms_1.FormsModule, http_1.HttpModule, app_routing_1.routing, primeng_1.CalendarModule, primeng_1.AutoCompleteModule, animations_1.BrowserAnimationsModule, primeng_1.CheckboxModule],
-        declarations: [app_component_1.AppComponent, alta_candidato_component_1.AltaCandidato, CandidatosTable_component_1.CandidatosTableComponent, perfil_candidato_component_1.CandidatoPerfil, idioma_component_1.IdiomaComponent, Formacion_Component_1.FormacionComponent, imageProfile_Upload_component_1.ImageUploaderComponent, OnlyNumbers_Directive_1.OnlyNumber, OnlyLetters_directive_1.OnlyLetters, not_found_component_1.NotFoundComponent],
+        declarations: [app_component_1.AppComponent, alta_candidato_component_1.AltaCandidato, CandidatosTable_component_1.CandidatosTableComponent, perfil_candidato_component_1.CandidatoPerfil, idioma_component_1.IdiomaComponent, Formacion_Component_1.FormacionComponent, curso_component_1.CursoComponent, Conocimiento_component_1.ConocimientoComponent, ExperienciaProfesional_componet_1.ExperienciaProfesionalComponent, imageProfile_Upload_component_1.ImageUploaderComponent, aboutme_component_1.AboutMeComponent, OnlyNumbers_Directive_1.OnlyNumber, OnlyLetters_directive_1.OnlyLetters, not_found_component_1.NotFoundComponent],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, catalogos_service_1.CatalogosService, Candidatos_Service_1.CandidatosService, PerfilCandidato_Service_1.PerfilCandidatoService, CURP_validator_1.CURPValidator, ValidacionIdentificaciones_service_1.ValidacionIdentificaciones, ProfileImage_service_1.PerfilImageService],
         bootstrap: [app_component_1.AppComponent]
     })

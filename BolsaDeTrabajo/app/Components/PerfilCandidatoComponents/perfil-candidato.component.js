@@ -27,18 +27,26 @@ var CandidatoPerfil = (function () {
         var parametros = this._Route.params.subscribe(function (params) {
             _this.id = params["id"];
         });
-        this.title = this.id ? "Edit Perfil" : "New CandidaPerfilto";
+        this.title = this.id ? "Edit Perfil" : "New CandidaPerfil";
         console.log('PerfilCandidato params');
         console.log(this.id);
         this.PerfilCandidato = this._fb.group({
             id: [],
             candidatoId: [this.id],
+            aboutme: this._fb.array([]),
             idiomas: this._fb.array([]),
-            formaciones: this._fb.array([])
+            Formaciones: this._fb.array([]),
+            experiencias: this._fb.array([]),
+            cursos: this._fb.array([]),
+            conocimientos: this._fb.array([]),
         });
         if (!this.id) {
-            this.addIdioma();
+            this.addAboutMe();
+            this.addExperiencia();
             this.addFormacion();
+            this.addIdioma();
+            this.addCurso();
+            this.addConocimiento();
             return;
         }
         this._perfilCandidatoService.GetPerfilCandidato(this.id)
@@ -46,11 +54,6 @@ var CandidatoPerfil = (function () {
             _this.candidatoPerfil = data;
             _this.PopulateForm(_this.candidatoPerfil);
         });
-        // add address
-        /* subscribe to addresses value changes */
-        // this.myForm.controls['addresses'].valueChanges.subscribe(x => {
-        //   console.log(x);
-        // })
     };
     CandidatoPerfil.prototype.initIdioma = function () {
         return this._fb.group({
@@ -66,13 +69,55 @@ var CandidatoPerfil = (function () {
         var control = this.PerfilCandidato.controls['idiomas'];
         var addrCtrl = this.initIdioma();
         control.push(addrCtrl);
-        /* subscribe to individual address value changes */
-        // addrCtrl.valueChanges.subscribe(x => {
-        //   console.log(x);
-        // })
+    };
+    CandidatoPerfil.prototype.initAboutMe = function () {
+        return this._fb.group({
+            acercaDeMi: [''],
+            puestoDeseado: [''],
+            areaExperiencia: [''],
+            areaExperienciaId: ['', forms_1.Validators.compose([
+                    forms_1.Validators.required, alta_candidato_validators_1.AltaCandidatoValidator.ListaValidator
+                ])],
+            perfilExperienciaId: ['Grado de Experiencia', forms_1.Validators.compose([
+                    forms_1.Validators.required, alta_candidato_validators_1.AltaCandidatoValidator.ListaValidator
+                ])],
+            areaInteresId: ['Área de interes'],
+            salarioAceptable: ['', forms_1.Validators.required],
+            salarioDeseado: ['', forms_1.Validators.required]
+        });
+    };
+    CandidatoPerfil.prototype.addAboutMe = function () {
+        var control = this.PerfilCandidato.controls['aboutme'];
+        var addrCtrl = this.initAboutMe();
+        control.push(addrCtrl);
     };
     CandidatoPerfil.prototype.removeIdioma = function (i) {
         var control = this.PerfilCandidato.controls['idiomas'];
+        control.removeAt(i);
+    };
+    CandidatoPerfil.prototype.initExperiencia = function () {
+        return this._fb.group({
+            empresa: ['', forms_1.Validators.required],
+            giroEmpresaId: ['Giro Empresa', forms_1.Validators.required],
+            cargoAsignado: ['', forms_1.Validators.required],
+            area: [],
+            areaId: ['', forms_1.Validators.required],
+            yearInicioId: ['Año Inicio'],
+            monthInicioId: ['Mes Inicio'],
+            yearTerminoId: ['Año Termino'],
+            monthTerminoId: ['Mes Termino'],
+            salario: ['', forms_1.Validators.required],
+            descripcion: [''],
+            trabajoActual: []
+        });
+    };
+    CandidatoPerfil.prototype.addExperiencia = function () {
+        var control = this.PerfilCandidato.controls['experiencias'];
+        var addrCtrl = this.initExperiencia();
+        control.push(addrCtrl);
+    };
+    CandidatoPerfil.prototype.removeExperiencia = function (i) {
+        var control = this.PerfilCandidato.controls['experiencias'];
         control.removeAt(i);
     };
     CandidatoPerfil.prototype.initFormacion = function () {
@@ -95,24 +140,60 @@ var CandidatoPerfil = (function () {
         });
     };
     CandidatoPerfil.prototype.addFormacion = function () {
-        //const control = <FormArray>this.PerfilCandidato.controls['idiomas'];
-        var control = this.PerfilCandidato.controls['formaciones'];
+        var control = this.PerfilCandidato.controls['Formaciones'];
         var addrCtrl = this.initFormacion();
         control.push(addrCtrl);
-        /* subscribe to individual address value changes */
-        // addrCtrl.valueChanges.subscribe(x => {
-        //   console.log(x);
-        // })
     };
     CandidatoPerfil.prototype.removeFormacion = function (i) {
-        var control = this.PerfilCandidato.controls['formaciones'];
+        var control = this.PerfilCandidato.controls['Formaciones'];
+        control.removeAt(i);
+    };
+    CandidatoPerfil.prototype.initCurso = function () {
+        return this._fb.group({
+            curso: ['', forms_1.Validators.required],
+            institucionEducativa: [],
+            institucionEducativaId: [''],
+            yearInicioId: ['Año Inicio'],
+            monthInicioId: ['Mes Inicio'],
+            yearTerminoId: ['Año Termino'],
+            monthTerminoId: ['Mes Termino']
+        });
+    };
+    CandidatoPerfil.prototype.addCurso = function () {
+        var control = this.PerfilCandidato.controls['cursos'];
+        var addrCtrl = this.initCurso();
+        control.push(addrCtrl);
+    };
+    CandidatoPerfil.prototype.removeCurso = function (i) {
+        var control = this.PerfilCandidato.controls['cursos'];
+        control.removeAt(i);
+    };
+    CandidatoPerfil.prototype.initConocimiento = function () {
+        return this._fb.group({
+            conocimiento: ['', forms_1.Validators.required],
+            herramienta: [],
+            institucionEducativa: [],
+            institucionEducativaId: [''],
+            nivelId: ['Nivel']
+        });
+    };
+    CandidatoPerfil.prototype.addConocimiento = function () {
+        var control = this.PerfilCandidato.controls['conocimientos'];
+        var addrCtrl = this.initConocimiento();
+        control.push(addrCtrl);
+    };
+    CandidatoPerfil.prototype.removeConocimiento = function (i) {
+        var control = this.PerfilCandidato.controls['conocimientos'];
         control.removeAt(i);
     };
     CandidatoPerfil.prototype.save = function (model) {
         var _this = this;
-        // call API to save
-        // ...
         var result;
+        if (this.PerfilCandidato.get('id').value) {
+            this.EntityAttached();
+        }
+        console.log('onSave');
+        console.log(this.PerfilCandidato.value);
         this._perfilCandidatoService.AddPerfilCandidato(this.id, this.PerfilCandidato.value)
             .subscribe(function (response) {
             console.log('DENTRO DEL SAVE');
@@ -122,34 +203,78 @@ var CandidatoPerfil = (function () {
             _this._Router.navigate(['']);
         });
         console.log(model);
-        console.log('onSave');
-        console.log(this.PerfilCandidato.value);
+    };
+    CandidatoPerfil.prototype.EntityAttached = function () {
+        var idiomas = this.PerfilCandidato.controls['idiomas'];
+        for (var i = 0; i < idiomas.length; i++) {
+            var idioma = idiomas.controls[i];
+            idioma.get('idioma').setValue(null);
+        }
+        var Formaciones = this.PerfilCandidato.controls['Formaciones'];
+        for (var i = 0; i < Formaciones.length; i++) {
+            var formacion = Formaciones.controls[i];
+            formacion.get('carrera').setValue(null);
+            formacion.get('institucionEducativa').setValue(null);
+        }
+        var experiencias = this.PerfilCandidato.controls['experiencias'];
+        for (var i = 0; i < experiencias.length; i++) {
+            var experiencia = experiencias.controls[i];
+            experiencia.get('area').setValue(null);
+        }
+        var cursos = this.PerfilCandidato.controls['cursos'];
+        for (var i = 0; i < cursos.length; i++) {
+            var curso = cursos.controls[i];
+            curso.get('institucionEducativa').setValue(null);
+        }
+        var conocimientos = this.PerfilCandidato.controls['conocimientos'];
+        for (var i = 0; i < conocimientos.length; i++) {
+            var conocimiento = conocimientos.controls[i];
+            conocimiento.get('institucionEducativa').setValue(null);
+        }
+        var aboutme = this.PerfilCandidato.controls['aboutme'];
+        for (var i = 0; i < aboutme.length; i++) {
+            var about = aboutme.controls[i];
+            about.get('areaExperiencia').setValue(null);
+        }
     };
     CandidatoPerfil.prototype.PopulateForm = function (perfilCandidato) {
         var index = 1;
         if (perfilCandidato == null) {
+            this.addAboutMe();
             this.addIdioma();
             this.addFormacion();
+            this.addExperiencia();
+            this.addCurso();
+            this.addConocimiento();
             return;
         }
-        if (perfilCandidato.formaciones.length == 0) {
-            this.addFormacion();
-            return;
-        }
-        if (perfilCandidato.idiomas.length == 0) {
-            this.addIdioma();
-            return;
+        console.log(perfilCandidato);
+        for (var about in perfilCandidato.aboutMe) {
+            this.addAboutMe();
         }
         for (var formaion in perfilCandidato.formaciones) {
             this.addFormacion();
         }
+        for (var experiencia in perfilCandidato.experiencias) {
+            this.addExperiencia();
+        }
+        for (var curso in perfilCandidato.cursos) {
+            this.addCurso();
+        }
         for (var idioma in perfilCandidato.idiomas) {
             this.addIdioma();
         }
+        for (var conocimiento in perfilCandidato.conocimientos) {
+            this.addConocimiento();
+        }
         this.PerfilCandidato.patchValue({
             id: this.candidatoPerfil.id,
+            aboutme: this.candidatoPerfil.aboutMe,
             idiomas: this.candidatoPerfil.idiomas,
-            formaciones: this.candidatoPerfil.formaciones,
+            Formaciones: this.candidatoPerfil.formaciones,
+            experiencias: this.candidatoPerfil.experiencias,
+            cursos: this.candidatoPerfil.cursos,
+            conocimientos: this.candidatoPerfil.conocimientos
         });
     };
     return CandidatoPerfil;

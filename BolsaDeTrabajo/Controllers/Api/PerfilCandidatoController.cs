@@ -23,8 +23,12 @@ namespace BolsaDeTrabajo.Controllers.Api
                 return Ok();            
 
             var PerfilCantidato = _context.PerfilCandidato
+                .Include("AboutMe")
                 .Include("Idiomas")
                 .Include("Formaciones")
+                .Include("Experiencias")
+                .Include("Cursos")
+                .Include("Conocimientos")
                                 .SingleOrDefault(p => p.CandidatoId == id);                          
 
             return Ok(PerfilCantidato);

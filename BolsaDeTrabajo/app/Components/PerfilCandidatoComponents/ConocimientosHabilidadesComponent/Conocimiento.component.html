@@ -1,0 +1,38 @@
+﻿
+<div class="form-inline" [formGroup]="Conocimientos">
+    <div class="form-group">
+        <input type="text" formControlName="conocimiento" class="form-control"
+               placeholder="Conocimiento o Habilidad" />
+        <div *ngIf="Conocimientos.controls.conocimiento.touched && Conocimientos.controls.conocimiento.invalid">
+            <small class="validation-error-message">
+                *Campo requerido
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" formControlName="herramienta" class="form-control"
+               placeholder="herramienta" />
+    </div>
+    <div class="form-group">
+        <p-autoComplete formControlName="institucionEducativa"
+                        [suggestions]="filteredInstituciones"
+                        (completeMethod)="filterInstituciones($event)"
+                        field="institucionEducativa"
+                        [size]="24"
+                        placeholder="Institución"
+                        [minLength]="1"
+                        inputStyleClass="form-control"
+                        (onSelect)="SetInstitucionId($event)">
+
+        </p-autoComplete>
+        <input type="text" formControlName="institucionEducativaId" hidden="hidden" />
+    </div>
+
+    <div class="form-group">
+        <select class="form-control" id="select" width="30" formControlName="nivelId"
+                [class.selectPlaceholder]="!Conocimientos.controls.nivelId.touched">
+            <option selected hidden>Nivel</option>
+            <option *ngFor="let nivel of niveles" [value]="nivel.id">{{nivel.nivel}}</option>
+        </select>
+    </div>
+</div>

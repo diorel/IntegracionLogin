@@ -60,4 +60,52 @@ var PerfilIdioma = (function () {
     return PerfilIdioma;
 }());
 exports.PerfilIdioma = PerfilIdioma;
+var PerfilExperiencia = (function () {
+    function PerfilExperiencia() {
+    }
+    return PerfilExperiencia;
+}());
+exports.PerfilExperiencia = PerfilExperiencia;
+var AreaExperiencia = (function () {
+    function AreaExperiencia() {
+    }
+    return AreaExperiencia;
+}());
+exports.AreaExperiencia = AreaExperiencia;
+var AreaInteres = (function () {
+    function AreaInteres() {
+    }
+    return AreaInteres;
+}());
+exports.AreaInteres = AreaInteres;
+var AboutMe = (function () {
+    function AboutMe() {
+    }
+    return AboutMe;
+}());
+exports.AboutMe = AboutMe;
+var Curso = (function () {
+    function Curso() {
+    }
+    return Curso;
+}());
+exports.Curso = Curso;
+var ConocimientoOHabilidad = (function () {
+    function ConocimientoOHabilidad() {
+    }
+    return ConocimientoOHabilidad;
+}());
+exports.ConocimientoOHabilidad = ConocimientoOHabilidad;
+var ExperienciaProfesional = (function () {
+    function ExperienciaProfesional() {
+    }
+    return ExperienciaProfesional;
+}());
+exports.ExperienciaProfesional = ExperienciaProfesional;
+var Area = (function () {
+    function Area() {
+    }
+    return Area;
+}());
+exports.Area = Area;
 //# sourceMappingURL=PerfilCandidato.js.map
